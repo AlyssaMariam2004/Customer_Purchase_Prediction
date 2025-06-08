@@ -15,7 +15,7 @@ CSV_PATH = os.path.join(BASE_DIR, "data", "NewData1.csv")
 
 #Scheduling model retraining
 RETRAIN_INTERVAL = 48 * 60 * 60  # 48 hours
-ROW_GROWTH_THRESHOLD = 10 #number of new enteries 
+ROW_GROWTH_THRESHOLD = 1000 #number of new enteries 
 
 #Logging Setup
 LOG_FILE = os.path.join(BASE_DIR, "logs", "recommendation_system.log")

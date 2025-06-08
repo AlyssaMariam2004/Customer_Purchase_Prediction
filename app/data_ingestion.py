@@ -4,7 +4,6 @@ import os
 from app.config import DB_CONFIG, CSV_PATH
 import logging
 
-#Connecting to the DB to get necessary data
 def fetch_data():
     conn = mysql.connector.connect(**DB_CONFIG)
     query = """
@@ -24,25 +23,27 @@ def fetch_data():
     JOIN Orders o ON oi.OrderID = o.OrderID
     JOIN Customers c ON o.CustomerID = c.CustomerID
     JOIN Products p ON oi.SKUID = p.SKUID;
-"""
-
+    """
     df = pd.read_sql(query, conn)
     conn.close()
     return df
 
-#handles merging data to the CSV
 def sync_data():
     new_data = fetch_data()
 
-    # Ensure the directory exists
-    os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
+    if not os.path.exists(CSV_PATH):
+        logging.warning(f"CSV not found at {CSV_PATH}. Cannot sync. Please provide base CSV.")
+        return  # Don't create or overwrite CSV — user must provide it manually.
 
-    if os.path.exists(CSV_PATH):
-        old = pd.read_csv(CSV_PATH) #reads exisiting data
-        combined = pd.concat([old, new_data]).drop_duplicates() #drops any duplicates
-        combined.to_csv(CSV_PATH, index=False) #appends
-        logging.info(f"CSV updated, total rows: {len(combined)}") #logs total rows
+    old_data = pd.read_csv(CSV_PATH)
+
+    # Drop exact duplicates
+    combined = pd.concat([old_data, new_data], ignore_index=True)
+    combined.drop_duplicates(subset=["Order ID", "Product ID"], inplace=True)
+
+    if len(combined) > len(old_data):
+        combined.to_csv(CSV_PATH, index=False)
+        logging.info(f"Appended new data. CSV updated. Total rows: {len(combined)}")
     else:
-        new_data.to_csv(CSV_PATH, index=False)
-        logging.info("CSV created.")
+        logging.info("No new unique rows found. CSV not updated.")
 
