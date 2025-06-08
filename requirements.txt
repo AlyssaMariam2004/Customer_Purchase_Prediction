@@ -1,5 +1,9 @@
 fastapi
 uvicorn
-pandas
+pydantic
 scikit-learn
+pandas
+numpy
+sqlalchemy
 mysql-connector-python
+pytest
