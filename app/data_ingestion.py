@@ -34,20 +34,29 @@ def sync_data():
 
     os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
 
+    dedup_cols = ["Order ID", "Product ID", "SKU ID"]
+
     if os.path.exists(CSV_PATH):
         old_data = pd.read_csv(CSV_PATH)
         logging.info(f"Existing CSV has {len(old_data)} rows")
 
-        combined = pd.concat([old_data, new_data], ignore_index=True)
-        combined.drop_duplicates(inplace=True)  # safest for now
+        # Check how many rows in new_data are truly new
+        new_unique = new_data.merge(old_data[dedup_cols], on=dedup_cols, how='left', indicator=True)
+        new_only = new_unique[new_unique['_merge'] == 'left_only']
+        logging.info(f"New unique rows to add: {len(new_only)}")
 
-        logging.info(f"After deduplication, CSV would have {len(combined)} rows")
+        if len(new_only) == 0:
+            logging.info("No new unique rows found in DB. CSV not updated.")
+            return
 
-        if len(combined) > len(old_data):
-            combined.to_csv(CSV_PATH, index=False)
-            logging.info("Appended new data and saved CSV.")
-        else:
-            logging.info("No new rows to add.")
+        combined = pd.concat([old_data, new_only[new_only.columns.difference(['_merge'])]], ignore_index=True)
+
+        before_dedup = len(combined)
+        combined.drop_duplicates(subset=dedup_cols, inplace=True)
+        logging.info(f"Dropped {before_dedup - len(combined)} duplicates after concatenation. Final row count: {len(combined)}")
+
+        combined.to_csv(CSV_PATH, index=False)
+        logging.info("Appended new unique data and saved CSV.")
     else:
         new_data.to_csv(CSV_PATH, index=False)
         logging.info("Created CSV for the first time.")

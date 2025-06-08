@@ -244,3 +244,61 @@
 2025-06-08 22:38:50,200 - INFO - After deduplication, CSV would have 24905 rows
 2025-06-08 22:38:50,364 - INFO - Appended new data and saved CSV.
 2025-06-08 22:38:50,433 - INFO - Starting feature preparation.
+2025-06-08 22:38:53,009 - INFO - Optimal clusters found: 2
+2025-06-08 22:38:53,023 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 22:38:53,027 - INFO - Model retrained.
+2025-06-08 22:50:11,653 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 22:50:11,704 - INFO - Fetched 20 rows from DB
+2025-06-08 22:50:11,761 - INFO - Existing CSV has 24905 rows
+2025-06-08 22:50:11,795 - INFO - After deduplication, CSV would have 24925 rows
+2025-06-08 22:50:11,958 - INFO - Appended new data and saved CSV.
+2025-06-08 22:50:12,039 - INFO - Starting feature preparation.
+2025-06-08 22:50:14,643 - INFO - Optimal clusters found: 2
+2025-06-08 22:50:14,649 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 22:50:14,659 - INFO - Model retrained.
+2025-06-08 22:52:15,089 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 22:52:15,146 - INFO - Fetched 20 rows from DB
+2025-06-08 22:52:15,195 - INFO - Existing CSV has 24925 rows
+2025-06-08 22:52:15,213 - INFO - Dropped 86 duplicates. Final row count: 24859
+2025-06-08 22:52:15,213 - INFO - No new unique rows found. CSV not updated.
+2025-06-08 22:52:15,258 - INFO - Starting feature preparation.
+2025-06-08 22:52:17,880 - INFO - Optimal clusters found: 2
+2025-06-08 22:52:17,885 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 22:52:17,896 - INFO - Model retrained.
+2025-06-08 22:54:56,879 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 22:54:56,932 - INFO - Fetched 20 rows from DB
+2025-06-08 22:54:57,007 - INFO - Existing CSV has 24885 rows
+2025-06-08 22:54:57,025 - INFO - Dropped 46 duplicates. Final row count: 24859
+2025-06-08 22:54:57,025 - INFO - No new unique rows found. CSV not updated.
+2025-06-08 22:54:57,081 - INFO - Starting feature preparation.
+2025-06-08 22:54:59,578 - INFO - Optimal clusters found: 2
+2025-06-08 22:54:59,592 - INFO - Assigned clusters for 1000 customers.
+2025-06-08 22:54:59,596 - INFO - Model retrained.
+2025-06-08 22:56:14,889 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 22:56:14,947 - INFO - Fetched 20 rows from DB
+2025-06-08 22:56:15,011 - INFO - Existing CSV has 24885 rows
+2025-06-08 22:56:15,026 - INFO - Dropped 46 duplicates. Final row count: 24859
+2025-06-08 22:56:15,026 - INFO - No new unique rows found. CSV not updated.
+2025-06-08 22:56:15,075 - INFO - Starting feature preparation.
+2025-06-08 22:56:17,640 - INFO - Optimal clusters found: 2
+2025-06-08 22:56:17,655 - INFO - Assigned clusters for 1000 customers.
+2025-06-08 22:56:17,659 - INFO - Model retrained.
+2025-06-08 22:58:22,151 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 22:58:22,208 - INFO - Fetched 20 rows from DB
+2025-06-08 22:58:22,276 - INFO - Existing CSV has 24885 rows
+2025-06-08 22:58:22,291 - INFO - Dropped 46 duplicates. Final row count: 24859
+2025-06-08 22:58:22,291 - INFO - No new unique rows found. CSV not updated.
+2025-06-08 22:58:22,357 - INFO - Starting feature preparation.
+2025-06-08 22:58:24,934 - INFO - Optimal clusters found: 2
+2025-06-08 22:58:24,949 - INFO - Assigned clusters for 1000 customers.
+2025-06-08 22:58:24,953 - INFO - Model retrained.
+2025-06-08 23:03:52,897 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-08 23:03:52,952 - INFO - Fetched 20 rows from DB
+2025-06-08 23:03:53,010 - INFO - Existing CSV has 24885 rows
+2025-06-08 23:03:53,024 - INFO - New unique rows to add: 20
+2025-06-08 23:03:53,044 - INFO - Dropped 46 duplicates after concatenation. Final row count: 24859
+2025-06-08 23:03:53,208 - INFO - Appended new unique data and saved CSV.
+2025-06-08 23:03:53,290 - INFO - Starting feature preparation.
+2025-06-08 23:03:56,031 - INFO - Optimal clusters found: 2
+2025-06-08 23:03:56,044 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 23:03:56,050 - INFO - Model retrained.

@@ -347,7 +347,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 145,CUST958,WH004,20,Male,04-08-2023,Product_113,SKU_066,Home Appliances,4,879.53
 145,CUST958,WH004,20,Male,04-08-2023,Product_101,SKU_194,Health & Wellness,4,477.86
 145,CUST958,WH004,20,Male,04-08-2023,Product_180,SKU_635,Fashion & Apparel,4,626.89
-145,CUST958,WH004,20,Male,04-08-2023,Product_063,SKU_813,Health & Wellness,5,293.85
 145,CUST958,WH004,20,Male,04-08-2023,Product_014,SKU_877,Beauty & Personal Care,1,98.65
 145,CUST958,WH004,20,Male,04-08-2023,Product_106,SKU_869,Books & Media,1,966.9
 149,CUST480,WH001,20,Female,23-08-2023,Product_020,SKU_031,Health & Wellness,1,890.92
@@ -372,7 +371,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 154,CUST956,WH005,26,Female,28-10-2023,Product_025,SKU_278,Toys & Games,3,290.38
 154,CUST956,WH005,26,Female,28-10-2023,Product_108,SKU_505,Books & Media,2,205.88
 154,CUST956,WH005,26,Female,28-10-2023,Product_010,SKU_516,Books & Media,5,482.99
-154,CUST956,WH005,26,Female,28-10-2023,Product_025,SKU_278,Toys & Games,5,131.12
 154,CUST956,WH005,26,Female,28-10-2023,Product_197,SKU_604,Electronics,2,910.76
 156,CUST010,WH002,54,Female,14-02-2023,Product_088,SKU_393,Electronics,1,535.29
 157,CUST835,WH004,24,Female,11-11-2023,Product_085,SKU_160,Books & Media,1,579.37
@@ -2278,7 +2276,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 914,CUST682,WH005,47,Male,13-10-2023,Product_084,SKU_146,Groceries & Gourmet Food,2,538.82
 914,CUST682,WH005,47,Male,13-10-2023,Product_124,SKU_501,Toys & Games,1,585.97
 914,CUST682,WH005,47,Male,13-10-2023,Product_001,SKU_969,Health & Wellness,5,824.68
-914,CUST682,WH005,47,Male,13-10-2023,Product_001,SKU_969,Health & Wellness,2,677.38
 914,CUST682,WH005,47,Male,13-10-2023,Product_108,SKU_916,Books & Media,3,605.91
 914,CUST682,WH005,47,Male,13-10-2023,Product_159,SKU_476,Electronics,4,266.36
 916,CUST373,WH002,58,Female,06-09-2023,Product_017,SKU_014,Beauty & Personal Care,5,55.62
@@ -2506,7 +2503,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 997,CUST674,WH002,61,Female,16-08-2023,Product_073,SKU_903,Beauty & Personal Care,4,70.2
 997,CUST674,WH002,61,Female,16-08-2023,Product_159,SKU_1000,Electronics,4,248.38
 997,CUST674,WH002,61,Female,16-08-2023,Product_052,SKU_040,Health & Wellness,1,874.59
-997,CUST674,WH002,61,Female,16-08-2023,Product_052,SKU_040,Health & Wellness,1,834.19
 997,CUST674,WH002,61,Female,16-08-2023,Product_083,SKU_033,Toys & Games,4,153.71
 997,CUST674,WH002,61,Female,16-08-2023,Product_090,SKU_998,Toys & Games,3,394.04
 997,CUST674,WH002,61,Female,16-08-2023,Product_160,SKU_355,Health & Wellness,3,446.24
@@ -2836,7 +2832,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 1119,CUST249,WH003,25,Male,03-09-2023,Product_042,SKU_086,Books & Media,4,564.0
 1122,CUST111,WH001,57,Female,23-06-2023,Product_089,SKU_830,Sports & Outdoors,4,386.85
 1122,CUST111,WH001,57,Female,23-06-2023,Product_169,SKU_682,Automotive,3,949.65
-1122,CUST111,WH001,57,Female,23-06-2023,Product_169,SKU_682,Automotive,3,226.61
 1122,CUST111,WH001,57,Female,23-06-2023,Product_132,SKU_116,Health & Wellness,2,561.09
 1122,CUST111,WH001,57,Female,23-06-2023,Product_011,SKU_295,Beauty & Personal Care,4,74.45
 1122,CUST111,WH001,57,Female,23-06-2023,Product_110,SKU_584,Health & Wellness,5,840.96
@@ -3886,7 +3881,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 1532,CUST851,WH001,38,Female,10-05-2023,Product_170,SKU_252,Books & Media,1,203.47
 1532,CUST851,WH001,38,Female,10-05-2023,Product_178,SKU_513,Beauty & Personal Care,5,49.16
 1532,CUST851,WH001,38,Female,10-05-2023,Product_001,SKU_314,Health & Wellness,3,995.28
-1532,CUST851,WH001,38,Female,10-05-2023,Product_094,SKU_110,Home Appliances,4,614.99
 1532,CUST851,WH001,38,Female,10-05-2023,Product_164,SKU_281,Electronics,1,924.5
 1533,CUST218,WH003,20,Male,05-01-2023,Product_143,SKU_510,Fashion & Apparel,1,258.77
 1536,CUST346,WH003,18,Female,21-06-2023,Product_160,SKU_296,Health & Wellness,1,488.16
@@ -3958,7 +3952,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 1560,CUST863,WH002,21,Male,11-04-2023,Product_001,SKU_037,Health & Wellness,1,644.6
 1560,CUST863,WH002,21,Male,11-04-2023,Product_127,SKU_429,Books & Media,1,247.8
 1560,CUST863,WH002,21,Male,11-04-2023,Product_107,SKU_458,Sports & Outdoors,1,978.64
-1560,CUST863,WH002,21,Male,11-04-2023,Product_001,SKU_037,Health & Wellness,4,353.34
 1560,CUST863,WH002,21,Male,11-04-2023,Product_082,SKU_712,Health & Wellness,5,994.39
 1560,CUST863,WH002,21,Male,11-04-2023,Product_065,SKU_526,Toys & Games,1,634.94
 1561,CUST983,WH005,53,Female,26-03-2023,Product_041,SKU_122,Automotive,3,278.72
@@ -4675,7 +4668,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 1865,CUST956,WH002,26,Female,31-05-2023,Product_182,SKU_061,Beauty & Personal Care,2,59.86
 1865,CUST956,WH002,26,Female,31-05-2023,Product_143,SKU_109,Fashion & Apparel,5,702.43
 1866,CUST444,WH002,34,Male,11-04-2023,Product_028,SKU_479,Books & Media,2,121.46
-1866,CUST444,WH002,34,Male,11-04-2023,Product_028,SKU_479,Books & Media,3,674.52
 1866,CUST444,WH002,34,Male,11-04-2023,Product_010,SKU_516,Books & Media,5,868.01
 1866,CUST444,WH002,34,Male,11-04-2023,Product_008,SKU_049,Fashion & Apparel,3,702.1
 1867,CUST494,WH004,60,Female,09-11-2023,Product_012,SKU_357,Home Appliances,1,521.51
@@ -5424,7 +5416,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 2144,CUST823,WH001,33,Female,07-05-2023,Product_136,SKU_855,Groceries & Gourmet Food,2,130.91
 2144,CUST823,WH001,33,Female,07-05-2023,Product_001,SKU_314,Health & Wellness,4,876.7
 2144,CUST823,WH001,33,Female,07-05-2023,Product_147,SKU_542,Electronics,2,166.55
-2144,CUST823,WH001,33,Female,07-05-2023,Product_094,SKU_155,Home Appliances,5,468.92
 2144,CUST823,WH001,33,Female,07-05-2023,Product_055,SKU_080,Automotive,4,956.48
 2144,CUST823,WH001,33,Female,07-05-2023,Product_040,SKU_632,Health & Wellness,3,959.92
 2144,CUST823,WH001,33,Female,07-05-2023,Product_081,SKU_115,Books & Media,2,303.55
@@ -5767,7 +5758,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 2299,CUST551,WH003,22,Male,24-11-2023,Product_169,SKU_727,Automotive,1,945.49
 2299,CUST551,WH003,22,Male,24-11-2023,Product_104,SKU_358,Fashion & Apparel,2,946.43
 2299,CUST551,WH003,22,Male,24-11-2023,Product_104,SKU_926,Fashion & Apparel,2,319.09
-2299,CUST551,WH003,22,Male,24-11-2023,Product_004,SKU_290,Beauty & Personal Care,1,81.01
 2299,CUST551,WH003,22,Male,24-11-2023,Product_176,SKU_187,Health & Wellness,1,91.45
 2301,CUST125,WH005,21,Female,31-08-2023,Product_126,SKU_651,Beauty & Personal Care,5,40.12
 2301,CUST125,WH005,21,Female,31-08-2023,Product_046,SKU_936,Fashion & Apparel,1,553.18
@@ -5803,7 +5793,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 2318,CUST010,WH004,54,Female,24-04-2023,Product_185,SKU_404,Beauty & Personal Care,4,58.47
 2318,CUST010,WH004,54,Female,24-04-2023,Product_099,SKU_123,Beauty & Personal Care,3,66.3
 2318,CUST010,WH004,54,Female,24-04-2023,Product_122,SKU_365,Electronics,4,992.32
-2318,CUST010,WH004,54,Female,24-04-2023,Product_175,SKU_841,Fashion & Apparel,2,559.06
 2319,CUST161,WH005,56,Female,04-09-2023,Product_046,SKU_469,Fashion & Apparel,4,271.21
 2319,CUST161,WH005,56,Female,04-09-2023,Product_197,SKU_208,Electronics,1,509.91
 2320,CUST444,WH005,34,Male,05-12-2023,Product_187,SKU_484,Home Appliances,2,860.02
@@ -6759,7 +6748,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 2722,CUST545,WH003,28,Male,02-11-2023,Product_136,SKU_407,Groceries & Gourmet Food,3,785.64
 2722,CUST545,WH003,28,Male,02-11-2023,Product_135,SKU_162,Books & Media,1,860.99
 2722,CUST545,WH003,28,Male,02-11-2023,Product_142,SKU_738,Health & Wellness,1,111.94
-2722,CUST545,WH003,28,Male,02-11-2023,Product_153,SKU_190,Toys & Games,1,337.66
 2722,CUST545,WH003,28,Male,02-11-2023,Product_199,SKU_880,Automotive,5,655.14
 2723,CUST984,WH004,34,Female,20-11-2023,Product_175,SKU_960,Fashion & Apparel,1,840.51
 2723,CUST984,WH004,34,Female,20-11-2023,Product_159,SKU_198,Electronics,5,652.7
@@ -6979,7 +6967,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 2810,CUST989,WH003,48,Female,01-05-2023,Product_157,SKU_565,Home Appliances,3,377.23
 2810,CUST989,WH003,48,Female,01-05-2023,Product_043,SKU_846,Toys & Games,2,315.6
 2810,CUST989,WH003,48,Female,01-05-2023,Product_042,SKU_010,Books & Media,5,214.36
-2810,CUST989,WH003,48,Female,01-05-2023,Product_043,SKU_846,Toys & Games,2,491.68
 2810,CUST989,WH003,48,Female,01-05-2023,Product_022,SKU_776,Sports & Outdoors,5,351.04
 2810,CUST989,WH003,48,Female,01-05-2023,Product_085,SKU_152,Books & Media,1,223.27
 2813,CUST698,WH003,50,Female,12-06-2023,Product_060,SKU_475,Books & Media,5,949.58
@@ -7927,7 +7914,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 3202,CUST781,WH001,50,Female,24-08-2023,Product_106,SKU_899,Books & Media,4,632.21
 3203,CUST779,WH004,30,Male,12-11-2023,Product_031,SKU_528,Sports & Outdoors,2,718.29
 3205,CUST463,WH003,63,Female,19-08-2023,Product_079,SKU_561,Sports & Outdoors,4,307.86
-3205,CUST463,WH003,63,Female,19-08-2023,Product_079,SKU_561,Sports & Outdoors,3,446.81
 3205,CUST463,WH003,63,Female,19-08-2023,Product_199,SKU_880,Automotive,1,242.65
 3207,CUST045,WH005,37,Female,11-03-2023,Product_120,SKU_467,Electronics,4,962.44
 3207,CUST045,WH005,37,Female,11-03-2023,Product_041,SKU_122,Automotive,1,815.67
@@ -8086,7 +8072,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 3269,CUST955,WH005,39,Female,12-09-2023,Product_156,SKU_742,Beauty & Personal Care,2,77.08
 3269,CUST955,WH005,39,Female,12-09-2023,Product_166,SKU_021,Sports & Outdoors,4,899.29
 3269,CUST955,WH005,39,Female,12-09-2023,Product_001,SKU_980,Health & Wellness,1,562.15
-3269,CUST955,WH005,39,Female,12-09-2023,Product_166,SKU_021,Sports & Outdoors,2,911.11
 3269,CUST955,WH005,39,Female,12-09-2023,Product_134,SKU_721,Beauty & Personal Care,2,30.44
 3270,CUST441,WH002,29,Female,17-10-2023,Product_136,SKU_407,Groceries & Gourmet Food,2,504.6
 3270,CUST441,WH002,29,Female,17-10-2023,Product_008,SKU_388,Fashion & Apparel,3,986.09
@@ -9464,7 +9449,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 3792,CUST798,WH004,39,Male,20-06-2023,Product_031,SKU_025,Sports & Outdoors,4,356.11
 3792,CUST798,WH004,39,Male,20-06-2023,Product_180,SKU_972,Fashion & Apparel,4,797.39
 3792,CUST798,WH004,39,Male,20-06-2023,Product_053,SKU_695,Automotive,1,783.04
-3792,CUST798,WH004,39,Male,20-06-2023,Product_031,SKU_025,Sports & Outdoors,4,699.23
 3793,CUST813,WH004,34,Male,26-07-2023,Product_075,SKU_655,Home Appliances,3,803.93
 3793,CUST813,WH004,34,Male,26-07-2023,Product_053,SKU_733,Automotive,1,983.85
 3794,CUST301,WH001,63,Male,18-11-2023,Product_046,SKU_936,Fashion & Apparel,3,426.16
@@ -10783,7 +10767,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 4303,CUST172,WH001,39,Male,24-11-2023,Product_073,SKU_373,Beauty & Personal Care,5,81.59
 4303,CUST172,WH001,39,Male,24-11-2023,Product_119,SKU_071,Home Appliances,3,137.28
 4303,CUST172,WH001,39,Male,24-11-2023,Product_194,SKU_710,Groceries & Gourmet Food,1,917.84
-4303,CUST172,WH001,39,Male,24-11-2023,Product_194,SKU_710,Groceries & Gourmet Food,3,456.13
 4303,CUST172,WH001,39,Male,24-11-2023,Product_173,SKU_553,Fashion & Apparel,4,888.66
 4303,CUST172,WH001,39,Male,24-11-2023,Product_155,SKU_309,Toys & Games,1,842.67
 4303,CUST172,WH001,39,Male,24-11-2023,Product_041,SKU_399,Automotive,5,532.57
@@ -11418,7 +11401,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 4553,CUST810,WH002,50,Female,02-02-2023,Product_091,SKU_939,Books & Media,1,576.79
 4554,CUST148,WH004,63,Female,28-09-2023,Product_176,SKU_396,Health & Wellness,3,630.68
 4554,CUST148,WH004,63,Female,28-09-2023,Product_166,SKU_952,Sports & Outdoors,1,645.29
-4554,CUST148,WH004,63,Female,28-09-2023,Product_176,SKU_396,Health & Wellness,1,438.9
 4554,CUST148,WH004,63,Female,28-09-2023,Product_093,SKU_241,Books & Media,3,722.37
 4554,CUST148,WH004,63,Female,28-09-2023,Product_158,SKU_180,Groceries & Gourmet Food,4,854.25
 4557,CUST256,WH004,23,Female,01-08-2023,Product_008,SKU_269,Fashion & Apparel,4,74.13
@@ -11713,7 +11695,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 4684,CUST343,WH004,46,Male,03-04-2023,Product_194,SKU_434,Groceries & Gourmet Food,4,924.92
 4685,CUST715,WH004,55,Male,24-02-2023,Product_086,SKU_538,Electronics,4,338.48
 4685,CUST715,WH004,55,Male,24-02-2023,Product_046,SKU_936,Fashion & Apparel,4,626.3
-4685,CUST715,WH004,55,Male,24-02-2023,Product_046,SKU_936,Fashion & Apparel,3,995.34
 4686,CUST939,WH005,20,Female,29-01-2023,Product_162,SKU_433,Health & Wellness,2,61.97
 4686,CUST939,WH005,20,Female,29-01-2023,Product_145,SKU_737,Fashion & Apparel,5,460.76
 4686,CUST939,WH005,20,Female,29-01-2023,Product_195,SKU_338,Fashion & Apparel,2,715.01
@@ -12359,7 +12340,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 4949,CUST032,WH005,55,Female,05-03-2023,Product_169,SKU_741,Automotive,3,244.48
 4949,CUST032,WH005,55,Female,05-03-2023,Product_014,SKU_877,Beauty & Personal Care,1,79.27
 4949,CUST032,WH005,55,Female,05-03-2023,Product_029,SKU_631,Automotive,2,764.08
-4949,CUST032,WH005,55,Female,05-03-2023,Product_014,SKU_877,Beauty & Personal Care,4,36.47
 4953,CUST103,WH001,59,Female,10-02-2023,Product_047,SKU_034,Fashion & Apparel,2,563.39
 4953,CUST103,WH001,59,Female,10-02-2023,Product_064,SKU_257,Fashion & Apparel,3,876.96
 4953,CUST103,WH001,59,Female,10-02-2023,Product_033,SKU_068,Books & Media,5,247.46
@@ -12799,7 +12779,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5115,CUST659,WH001,31,Female,01-05-2023,Product_174,SKU_867,Health & Wellness,5,99.74
 5115,CUST659,WH001,31,Female,01-05-2023,Product_039,SKU_586,Groceries & Gourmet Food,2,254.59
 5115,CUST659,WH001,31,Female,01-05-2023,Product_180,SKU_408,Fashion & Apparel,5,525.25
-5115,CUST659,WH001,31,Female,01-05-2023,Product_156,SKU_742,Beauty & Personal Care,3,78.14
 5116,CUST347,WH003,48,Female,17-09-2023,Product_142,SKU_738,Health & Wellness,1,492.7
 5116,CUST347,WH003,48,Female,17-09-2023,Product_023,SKU_406,Beauty & Personal Care,5,39.45
 5116,CUST347,WH003,48,Female,17-09-2023,Product_199,SKU_346,Automotive,2,283.41
@@ -13286,7 +13265,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5303,CUST303,WH005,28,Female,26-11-2023,Product_192,SKU_805,Electronics,2,564.86
 5303,CUST303,WH005,28,Female,26-11-2023,Product_020,SKU_158,Health & Wellness,5,843.37
 5303,CUST303,WH005,28,Female,26-11-2023,Product_170,SKU_496,Books & Media,3,454.73
-5303,CUST303,WH005,28,Female,26-11-2023,Product_108,SKU_492,Books & Media,2,295.42
 5303,CUST303,WH005,28,Female,26-11-2023,Product_156,SKU_524,Beauty & Personal Care,2,20.98
 5303,CUST303,WH005,28,Female,26-11-2023,Product_013,SKU_595,Home Appliances,2,890.69
 5303,CUST303,WH005,28,Female,26-11-2023,Product_094,SKU_155,Home Appliances,5,807.36
@@ -13399,7 +13377,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5355,CUST814,WH001,65,Male,13-09-2023,Product_192,SKU_956,Electronics,5,587.17
 5355,CUST814,WH001,65,Male,13-09-2023,Product_054,SKU_992,Books & Media,2,732.81
 5355,CUST814,WH001,65,Male,13-09-2023,Product_119,SKU_883,Home Appliances,2,952.87
-5355,CUST814,WH001,65,Male,13-09-2023,Product_054,SKU_992,Books & Media,5,947.97
 5355,CUST814,WH001,65,Male,13-09-2023,Product_113,SKU_066,Home Appliances,5,422.91
 5356,CUST208,WH004,62,Male,12-05-2023,Product_053,SKU_443,Automotive,2,630.15
 5357,CUST660,WH003,60,Female,02-01-2023,Product_048,SKU_973,Toys & Games,5,563.8
@@ -14344,7 +14321,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5718,CUST613,WH005,42,Male,14-02-2023,Product_017,SKU_556,Beauty & Personal Care,3,44.75
 5718,CUST613,WH005,42,Male,14-02-2023,Product_063,SKU_768,Health & Wellness,1,520.4
 5719,CUST666,WH004,45,Female,22-02-2023,Product_105,SKU_925,Fashion & Apparel,4,205.79
-5719,CUST666,WH004,45,Female,22-02-2023,Product_105,SKU_925,Fashion & Apparel,3,749.74
 5719,CUST666,WH004,45,Female,22-02-2023,Product_028,SKU_039,Books & Media,5,772.77
 5719,CUST666,WH004,45,Female,22-02-2023,Product_013,SKU_595,Home Appliances,3,248.52
 5719,CUST666,WH004,45,Female,22-02-2023,Product_016,SKU_907,Home Appliances,2,89.8
@@ -14550,7 +14526,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5796,CUST162,WH003,35,Male,24-07-2023,Product_068,SKU_821,Health & Wellness,5,793.74
 5796,CUST162,WH003,35,Male,24-07-2023,Product_152,SKU_279,Beauty & Personal Care,5,52.68
 5797,CUST143,WH005,42,Male,01-01-2023,Product_053,SKU_733,Automotive,3,193.79
-5797,CUST143,WH005,42,Male,01-01-2023,Product_053,SKU_733,Automotive,5,870.08
 5797,CUST143,WH005,42,Male,01-01-2023,Product_087,SKU_064,Beauty & Personal Care,2,99.53
 5797,CUST143,WH005,42,Male,01-01-2023,Product_070,SKU_144,Sports & Outdoors,5,433.54
 5797,CUST143,WH005,42,Male,01-01-2023,Product_179,SKU_060,Home Appliances,1,720.01
@@ -14783,7 +14758,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 5888,CUST070,WH004,43,Female,08-03-2023,Product_113,SKU_102,Home Appliances,1,459.3
 5889,CUST566,WH003,55,Male,20-08-2023,Product_082,SKU_389,Health & Wellness,5,716.77
 5889,CUST566,WH003,55,Male,20-08-2023,Product_161,SKU_647,Fashion & Apparel,4,394.07
-5889,CUST566,WH003,55,Male,20-08-2023,Product_161,SKU_647,Fashion & Apparel,3,685.57
 5889,CUST566,WH003,55,Male,20-08-2023,Product_041,SKU_128,Automotive,3,414.17
 5890,CUST369,WH002,39,Female,01-04-2023,Product_084,SKU_057,Groceries & Gourmet Food,2,507.92
 5890,CUST369,WH002,39,Female,01-04-2023,Product_038,SKU_714,Health & Wellness,4,979.2
@@ -16064,7 +16038,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 6441,CUST746,WH004,27,Female,08-08-2023,Product_171,SKU_636,Toys & Games,1,331.09
 6441,CUST746,WH004,27,Female,08-08-2023,Product_125,SKU_842,Toys & Games,2,578.24
 6441,CUST746,WH004,27,Female,08-08-2023,Product_086,SKU_148,Electronics,1,505.08
-6441,CUST746,WH004,27,Female,08-08-2023,Product_086,SKU_148,Electronics,4,424.53
 6442,CUST393,WH005,32,Male,24-08-2023,Product_162,SKU_786,Health & Wellness,5,731.01
 6442,CUST393,WH005,32,Male,24-08-2023,Product_086,SKU_385,Electronics,2,875.13
 6442,CUST393,WH005,32,Male,24-08-2023,Product_036,SKU_851,Sports & Outdoors,3,226.32
@@ -16180,7 +16153,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 6486,CUST591,WH002,58,Female,26-07-2023,Product_010,SKU_167,Books & Media,3,856.49
 6488,CUST068,WH004,31,Female,13-02-2023,Product_055,SKU_557,Automotive,2,806.44
 6488,CUST068,WH004,31,Female,13-02-2023,Product_190,SKU_490,Groceries & Gourmet Food,3,768.71
-6488,CUST068,WH004,31,Female,13-02-2023,Product_190,SKU_490,Groceries & Gourmet Food,4,547.66
 6489,CUST747,WH001,55,Female,02-07-2023,Product_192,SKU_805,Electronics,1,889.61
 6489,CUST747,WH001,55,Female,02-07-2023,Product_133,SKU_579,Toys & Games,3,976.43
 6489,CUST747,WH001,55,Female,02-07-2023,Product_073,SKU_244,Beauty & Personal Care,3,84.85
@@ -16648,7 +16620,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 6659,CUST370,WH003,47,Male,15-12-2023,Product_188,SKU_163,Automotive,5,891.98
 6659,CUST370,WH003,47,Male,15-12-2023,Product_017,SKU_093,Beauty & Personal Care,5,97.43
 6659,CUST370,WH003,47,Male,15-12-2023,Product_088,SKU_326,Electronics,3,457.73
-6659,CUST370,WH003,47,Male,15-12-2023,Product_017,SKU_093,Beauty & Personal Care,1,95.74
 6659,CUST370,WH003,47,Male,15-12-2023,Product_183,SKU_390,Fashion & Apparel,4,637.17
 6659,CUST370,WH003,47,Male,15-12-2023,Product_113,SKU_430,Home Appliances,4,574.35
 6659,CUST370,WH003,47,Male,15-12-2023,Product_167,SKU_332,Toys & Games,1,642.08
@@ -17107,7 +17078,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 6827,CUST885,WH003,44,Male,22-12-2023,Product_128,SKU_397,Home Appliances,3,938.86
 6828,CUST933,WH002,37,Female,26-01-2023,Product_116,SKU_904,Home Appliances,3,773.34
 6828,CUST933,WH002,37,Female,26-01-2023,Product_151,SKU_030,Automotive,5,223.39
-6828,CUST933,WH002,37,Female,26-01-2023,Product_151,SKU_030,Automotive,2,846.43
 6828,CUST933,WH002,37,Female,26-01-2023,Product_002,SKU_796,Home Appliances,4,251.67
 6829,CUST214,WH001,48,Male,14-02-2023,Product_174,SKU_483,Health & Wellness,3,342.78
 6829,CUST214,WH001,48,Male,14-02-2023,Product_094,SKU_648,Home Appliances,5,929.4
@@ -17658,7 +17628,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7070,CUST163,WH001,34,Male,29-04-2023,Product_125,SKU_770,Toys & Games,5,412.87
 7070,CUST163,WH001,34,Male,29-04-2023,Product_185,SKU_455,Beauty & Personal Care,3,87.23
 7070,CUST163,WH001,34,Male,29-04-2023,Product_142,SKU_858,Health & Wellness,2,722.97
-7070,CUST163,WH001,34,Male,29-04-2023,Product_125,SKU_770,Toys & Games,2,991.22
 7070,CUST163,WH001,34,Male,29-04-2023,Product_072,SKU_473,Electronics,4,814.91
 7070,CUST163,WH001,34,Male,29-04-2023,Product_081,SKU_774,Books & Media,3,969.2
 7074,CUST474,WH003,53,Female,19-12-2023,Product_183,SKU_221,Fashion & Apparel,4,478.08
@@ -18183,7 +18152,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7243,CUST835,WH002,24,Female,06-06-2023,Product_098,SKU_270,Books & Media,1,474.02
 7243,CUST835,WH002,24,Female,06-06-2023,Product_198,SKU_369,Health & Wellness,5,417.97
 7243,CUST835,WH002,24,Female,06-06-2023,Product_169,SKU_177,Automotive,4,217.27
-7243,CUST835,WH002,24,Female,06-06-2023,Product_137,SKU_344,Home Appliances,2,554.77
 7243,CUST835,WH002,24,Female,06-06-2023,Product_178,SKU_574,Beauty & Personal Care,1,38.21
 7245,CUST896,WH002,58,Male,07-10-2023,Product_084,SKU_146,Groceries & Gourmet Food,2,513.26
 7245,CUST896,WH002,58,Male,07-10-2023,Product_196,SKU_413,Books & Media,3,616.72
@@ -18356,7 +18324,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7315,CUST586,WH004,63,Female,18-04-2023,Product_041,SKU_940,Automotive,2,939.93
 7315,CUST586,WH004,63,Female,18-04-2023,Product_122,SKU_982,Electronics,1,633.33
 7315,CUST586,WH004,63,Female,18-04-2023,Product_022,SKU_532,Sports & Outdoors,5,151.79
-7315,CUST586,WH004,63,Female,18-04-2023,Product_041,SKU_940,Automotive,5,716.64
 7315,CUST586,WH004,63,Female,18-04-2023,Product_194,SKU_434,Groceries & Gourmet Food,4,938.91
 7316,CUST822,WH005,61,Male,08-01-2023,Product_025,SKU_394,Toys & Games,2,565.75
 7316,CUST822,WH005,61,Male,08-01-2023,Product_145,SKU_233,Fashion & Apparel,3,246.46
@@ -18833,7 +18800,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7535,CUST380,WH004,27,Female,18-04-2023,Product_152,SKU_906,Beauty & Personal Care,3,99.27
 7535,CUST380,WH004,27,Female,18-04-2023,Product_142,SKU_858,Health & Wellness,5,873.96
 7540,CUST642,WH001,54,Female,27-03-2023,Product_132,SKU_893,Health & Wellness,2,924.88
-7540,CUST642,WH001,54,Female,27-03-2023,Product_132,SKU_893,Health & Wellness,1,792.31
 7540,CUST642,WH001,54,Female,27-03-2023,Product_162,SKU_539,Health & Wellness,1,462.76
 7540,CUST642,WH001,54,Female,27-03-2023,Product_172,SKU_522,Groceries & Gourmet Food,1,242.97
 7540,CUST642,WH001,54,Female,27-03-2023,Product_001,SKU_444,Health & Wellness,3,950.95
@@ -19518,7 +19484,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7805,CUST886,WH002,40,Male,09-10-2023,Product_133,SKU_240,Toys & Games,5,777.7
 7805,CUST886,WH002,40,Male,09-10-2023,Product_199,SKU_880,Automotive,3,401.82
 7805,CUST886,WH002,40,Male,09-10-2023,Product_122,SKU_982,Electronics,3,435.77
-7805,CUST886,WH002,40,Male,09-10-2023,Product_123,SKU_254,Automotive,5,307.13
 7805,CUST886,WH002,40,Male,09-10-2023,Product_055,SKU_699,Automotive,1,972.75
 7805,CUST886,WH002,40,Male,09-10-2023,Product_122,SKU_803,Electronics,2,635.11
 7805,CUST886,WH002,40,Male,09-10-2023,Product_141,SKU_887,Books & Media,5,84.13
@@ -19685,7 +19650,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 7872,CUST041,WH005,18,Female,24-11-2023,Product_160,SKU_436,Health & Wellness,5,325.39
 7872,CUST041,WH005,18,Female,24-11-2023,Product_077,SKU_317,Automotive,1,54.65
 7872,CUST041,WH005,18,Female,24-11-2023,Product_157,SKU_227,Home Appliances,2,458.59
-7872,CUST041,WH005,18,Female,24-11-2023,Product_160,SKU_436,Health & Wellness,1,853.51
 7872,CUST041,WH005,18,Female,24-11-2023,Product_116,SKU_628,Home Appliances,3,504.69
 7873,CUST422,WH003,25,Female,02-10-2023,Product_130,SKU_113,Fashion & Apparel,1,237.0
 7873,CUST422,WH003,25,Female,02-10-2023,Product_051,SKU_765,Automotive,2,805.26
@@ -21061,7 +21025,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 8427,CUST449,WH002,48,Male,13-03-2023,Product_017,SKU_093,Beauty & Personal Care,1,20.07
 8427,CUST449,WH002,48,Male,13-03-2023,Product_115,SKU_044,Health & Wellness,3,119.39
 8427,CUST449,WH002,48,Male,13-03-2023,Product_048,SKU_973,Toys & Games,5,652.24
-8427,CUST449,WH002,48,Male,13-03-2023,Product_088,SKU_326,Electronics,5,873.85
 8428,CUST011,WH001,28,Female,15-02-2023,Product_118,SKU_674,Toys & Games,5,134.85
 8428,CUST011,WH001,28,Female,15-02-2023,Product_089,SKU_830,Sports & Outdoors,1,128.06
 8428,CUST011,WH001,28,Female,15-02-2023,Product_117,SKU_184,Books & Media,3,739.17
@@ -21130,7 +21093,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 8452,CUST622,WH004,35,Female,20-02-2023,Product_095,SKU_409,Home Appliances,3,338.89
 8452,CUST622,WH004,35,Female,20-02-2023,Product_125,SKU_713,Toys & Games,4,179.95
 8452,CUST622,WH004,35,Female,20-02-2023,Product_122,SKU_255,Electronics,1,820.06
-8452,CUST622,WH004,35,Female,20-02-2023,Product_122,SKU_255,Electronics,4,976.47
 8452,CUST622,WH004,35,Female,20-02-2023,Product_122,SKU_982,Electronics,5,360.57
 8452,CUST622,WH004,35,Female,20-02-2023,Product_013,SKU_595,Home Appliances,4,407.24
 8452,CUST622,WH004,35,Female,20-02-2023,Product_116,SKU_866,Home Appliances,4,869.07
@@ -21461,7 +21423,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 8614,CUST841,WH004,52,Female,23-09-2023,Product_072,SKU_179,Electronics,4,622.02
 8614,CUST841,WH004,52,Female,23-09-2023,Product_160,SKU_560,Health & Wellness,1,647.14
 8616,CUST154,WH002,34,Female,07-10-2023,Product_176,SKU_603,Health & Wellness,1,954.45
-8616,CUST154,WH002,34,Female,07-10-2023,Product_176,SKU_603,Health & Wellness,1,852.97
 8616,CUST154,WH002,34,Female,07-10-2023,Product_135,SKU_304,Books & Media,3,655.47
 8616,CUST154,WH002,34,Female,07-10-2023,Product_124,SKU_405,Toys & Games,1,364.48
 8617,CUST964,WH001,21,Male,20-11-2023,Product_142,SKU_580,Health & Wellness,3,101.61
@@ -21825,7 +21786,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 8780,CUST323,WH001,56,Male,12-05-2023,Product_025,SKU_882,Toys & Games,3,698.86
 8780,CUST323,WH001,56,Male,12-05-2023,Product_187,SKU_484,Home Appliances,3,535.14
 8780,CUST323,WH001,56,Male,12-05-2023,Product_063,SKU_671,Health & Wellness,5,212.91
-8780,CUST323,WH001,56,Male,12-05-2023,Product_025,SKU_882,Toys & Games,5,177.33
 8782,CUST582,WH001,26,Female,12-10-2023,Product_016,SKU_211,Home Appliances,5,548.89
 8782,CUST582,WH001,26,Female,12-10-2023,Product_176,SKU_301,Health & Wellness,1,779.57
 8783,CUST814,WH004,65,Male,15-03-2023,Product_105,SKU_154,Fashion & Apparel,5,658.9
@@ -21891,7 +21851,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 8816,CUST668,WH005,50,Male,07-06-2023,Product_122,SKU_255,Electronics,2,285.23
 8817,CUST970,WH005,19,Male,05-06-2023,Product_123,SKU_264,Automotive,1,727.23
 8818,CUST947,WH001,31,Female,01-08-2023,Product_077,SKU_593,Automotive,4,310.99
-8818,CUST947,WH001,31,Female,01-08-2023,Product_077,SKU_593,Automotive,1,229.66
 8818,CUST947,WH001,31,Female,01-08-2023,Product_048,SKU_176,Toys & Games,5,916.56
 8819,CUST668,WH005,50,Male,24-02-2023,Product_145,SKU_233,Fashion & Apparel,3,81.34
 8819,CUST668,WH005,50,Male,24-02-2023,Product_073,SKU_923,Beauty & Personal Care,5,47.56
@@ -23267,14 +23226,12 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 9355,CUST406,WH001,39,Female,28-04-2023,Product_168,SKU_090,Groceries & Gourmet Food,5,419.7
 9355,CUST406,WH001,39,Female,28-04-2023,Product_173,SKU_553,Fashion & Apparel,1,968.4
 9355,CUST406,WH001,39,Female,28-04-2023,Product_018,SKU_108,Fashion & Apparel,1,810.2
-9355,CUST406,WH001,39,Female,28-04-2023,Product_168,SKU_090,Groceries & Gourmet Food,2,422.95
 9355,CUST406,WH001,39,Female,28-04-2023,Product_020,SKU_438,Health & Wellness,4,742.27
 9355,CUST406,WH001,39,Female,28-04-2023,Product_098,SKU_270,Books & Media,4,534.67
 9355,CUST406,WH001,39,Female,28-04-2023,Product_053,SKU_558,Automotive,2,119.61
 9355,CUST406,WH001,39,Female,28-04-2023,Product_038,SKU_714,Health & Wellness,3,535.45
 9355,CUST406,WH001,39,Female,28-04-2023,Product_044,SKU_222,Beauty & Personal Care,5,53.22
 9355,CUST406,WH001,39,Female,28-04-2023,Product_116,SKU_852,Home Appliances,3,752.14
-9355,CUST406,WH001,39,Female,28-04-2023,Product_173,SKU_553,Fashion & Apparel,3,420.74
 9355,CUST406,WH001,39,Female,28-04-2023,Product_046,SKU_083,Fashion & Apparel,2,592.99
 9355,CUST406,WH001,39,Female,28-04-2023,Product_047,SKU_034,Fashion & Apparel,4,799.31
 9358,CUST136,WH001,33,Male,29-12-2023,Product_012,SKU_517,Home Appliances,1,451.0
@@ -23861,7 +23818,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 9599,CUST059,WH002,30,Male,07-09-2023,Product_095,SKU_771,Home Appliances,5,778.13
 9599,CUST059,WH002,30,Male,07-09-2023,Product_070,SKU_144,Sports & Outdoors,1,891.99
 9599,CUST059,WH002,30,Male,07-09-2023,Product_092,SKU_219,Fashion & Apparel,3,852.99
-9599,CUST059,WH002,30,Male,07-09-2023,Product_189,SKU_585,Beauty & Personal Care,4,77.21
 9599,CUST059,WH002,30,Male,07-09-2023,Product_179,SKU_835,Home Appliances,4,616.47
 9599,CUST059,WH002,30,Male,07-09-2023,Product_027,SKU_411,Books & Media,2,435.24
 9601,CUST284,WH002,63,Female,19-08-2023,Product_076,SKU_487,Fashion & Apparel,2,437.77
@@ -23943,7 +23899,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 9629,CUST895,WH001,37,Female,15-02-2023,Product_008,SKU_388,Fashion & Apparel,4,280.95
 9629,CUST895,WH001,37,Female,15-02-2023,Product_010,SKU_150,Books & Media,3,248.2
 9631,CUST967,WH001,54,Male,24-12-2023,Product_110,SKU_291,Health & Wellness,3,899.84
-9631,CUST967,WH001,54,Male,24-12-2023,Product_110,SKU_291,Health & Wellness,3,946.39
 9631,CUST967,WH001,54,Male,24-12-2023,Product_107,SKU_843,Sports & Outdoors,1,942.38
 9631,CUST967,WH001,54,Male,24-12-2023,Product_057,SKU_999,Automotive,5,605.1
 9631,CUST967,WH001,54,Male,24-12-2023,Product_067,SKU_629,Home Appliances,1,256.8
@@ -24495,7 +24450,6 @@ Order ID,Customer ID,Warehouse ID,Customer Age,Customer Gender,Date,Product ID,S
 9831,CUST713,WH003,33,Female,27-10-2023,Product_077,SKU_593,Automotive,3,123.66
 9831,CUST713,WH003,33,Female,27-10-2023,Product_115,SKU_172,Health & Wellness,5,519.56
 9831,CUST713,WH003,33,Female,27-10-2023,Product_158,SKU_791,Groceries & Gourmet Food,4,890.35
-9831,CUST713,WH003,33,Female,27-10-2023,Product_158,SKU_791,Groceries & Gourmet Food,1,699.92
 9831,CUST713,WH003,33,Female,27-10-2023,Product_160,SKU_560,Health & Wellness,3,437.34
 9831,CUST713,WH003,33,Female,27-10-2023,Product_160,SKU_436,Health & Wellness,4,597.22
 9831,CUST713,WH003,33,Female,27-10-2023,Product_093,SKU_715,Books & Media,2,496.81
