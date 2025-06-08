@@ -30,20 +30,24 @@ def fetch_data():
 
 def sync_data():
     new_data = fetch_data()
+    logging.info(f"Fetched {len(new_data)} rows from DB")
 
-    if not os.path.exists(CSV_PATH):
-        logging.warning(f"CSV not found at {CSV_PATH}. Cannot sync. Please provide base CSV.")
-        return  # Don't create or overwrite CSV — user must provide it manually.
+    os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
 
-    old_data = pd.read_csv(CSV_PATH)
+    if os.path.exists(CSV_PATH):
+        old_data = pd.read_csv(CSV_PATH)
+        logging.info(f"Existing CSV has {len(old_data)} rows")
 
-    # Drop exact duplicates
-    combined = pd.concat([old_data, new_data], ignore_index=True)
-    combined.drop_duplicates(subset=["Order ID", "Product ID"], inplace=True)
+        combined = pd.concat([old_data, new_data], ignore_index=True)
+        combined.drop_duplicates(inplace=True)  # safest for now
 
-    if len(combined) > len(old_data):
-        combined.to_csv(CSV_PATH, index=False)
-        logging.info(f"Appended new data. CSV updated. Total rows: {len(combined)}")
+        logging.info(f"After deduplication, CSV would have {len(combined)} rows")
+
+        if len(combined) > len(old_data):
+            combined.to_csv(CSV_PATH, index=False)
+            logging.info("Appended new data and saved CSV.")
+        else:
+            logging.info("No new rows to add.")
     else:
-        logging.info("No new unique rows found. CSV not updated.")
-
+        new_data.to_csv(CSV_PATH, index=False)
+        logging.info("Created CSV for the first time.")
