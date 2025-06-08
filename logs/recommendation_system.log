@@ -1,0 +1,183 @@
+2025-06-05 10:19:21,010 - INFO - CSV updated, total rows: 24905
+2025-06-05 10:19:23,806 - INFO - Model retrained.
+2025-06-05 10:25:10,561 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:25:13,347 - INFO - Model retrained.
+2025-06-05 10:25:58,838 - INFO - CSV updated, total rows: 24945
+2025-06-05 10:26:01,716 - INFO - Model retrained.
+2025-06-05 10:40:16,296 - INFO - CSV updated, total rows: 24905
+2025-06-05 10:40:18,908 - INFO - Model retrained.
+2025-06-05 10:41:42,693 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:41:45,670 - INFO - Model retrained.
+2025-06-05 10:42:21,614 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:42:24,341 - INFO - Model retrained.
+2025-06-05 10:42:30,830 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:42:33,537 - INFO - Model retrained.
+2025-06-05 10:42:39,778 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:42:41,398 - INFO - Model retrained.
+2025-06-05 10:42:45,718 - INFO - CSV updated, total rows: 24925
+2025-06-05 10:42:48,423 - INFO - Model retrained.
+2025-06-05 12:04:08,390 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:04:12,586 - INFO - Model retrained.
+2025-06-05 12:07:32,285 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:07:34,987 - INFO - Model retrained.
+2025-06-05 12:27:41,349 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:27:41,451 - INFO - Starting feature preparation.
+2025-06-05 12:27:44,242 - INFO - Optimal clusters found: 2
+2025-06-05 12:27:44,261 - INFO - Assigned clusters for 1002 customers.
+2025-06-05 12:27:44,265 - INFO - Model retrained.
+2025-06-05 12:29:03,873 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:29:03,954 - INFO - Starting feature preparation.
+2025-06-05 12:29:06,560 - INFO - Optimal clusters found: 2
+2025-06-05 12:29:06,581 - INFO - Assigned clusters for 1002 customers.
+2025-06-05 12:29:06,585 - INFO - Model retrained.
+2025-06-05 12:29:23,529 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:29:23,602 - INFO - Starting feature preparation.
+2025-06-05 12:29:26,245 - INFO - Optimal clusters found: 2
+2025-06-05 12:29:26,260 - INFO - Assigned clusters for 1002 customers.
+2025-06-05 12:29:26,260 - INFO - Model retrained.
+2025-06-05 12:32:14,568 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:32:14,641 - INFO - Starting feature preparation.
+2025-06-05 12:32:17,147 - INFO - Optimal clusters found: 2
+2025-06-05 12:32:17,158 - INFO - Assigned clusters for 1002 customers.
+2025-06-05 12:32:17,162 - INFO - Model retrained.
+2025-06-05 12:34:15,555 - INFO - CSV updated, total rows: 24925
+2025-06-05 12:34:15,626 - INFO - Starting feature preparation.
+2025-06-05 12:34:18,176 - INFO - Optimal clusters found: 2
+2025-06-05 12:34:18,188 - INFO - Assigned clusters for 1002 customers.
+2025-06-05 12:34:18,192 - INFO - Model retrained.
+2025-06-06 09:28:29,136 - INFO - CSV updated, total rows: 24905
+2025-06-06 09:28:29,224 - INFO - Starting feature preparation.
+2025-06-06 09:28:32,242 - INFO - Optimal clusters found: 2
+2025-06-06 09:28:32,248 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 09:28:32,264 - INFO - Model retrained.
+2025-06-06 09:29:15,663 - INFO - Generating recommendations for Customer ID: CUST_NEW001
+2025-06-06 09:29:15,731 - INFO - Recommendations for CUST_NEW001: ['Product_168', 'Product_169', 'Product_173', 'Product_113', 'Product_190']
+2025-06-06 09:29:26,157 - INFO - Generating recommendations for Customer ID: CUST_123456
+2025-06-06 09:29:26,157 - WARNING - Customer ID CUST_123456 not found in data.
+2025-06-06 09:29:35,400 - INFO - Generating recommendations for Customer ID: CUST_001
+2025-06-06 09:29:35,409 - WARNING - Customer ID CUST_001 not found in data.
+2025-06-06 09:29:41,395 - INFO - Generating recommendations for Customer ID: CUST_001
+2025-06-06 09:29:41,395 - WARNING - Customer ID CUST_001 not found in data.
+2025-06-06 09:29:53,534 - INFO - Generating recommendations for Customer ID: CUST_123
+2025-06-06 09:29:53,534 - WARNING - Customer ID CUST_123 not found in data.
+2025-06-06 09:31:09,058 - INFO - Generating recommendations for Customer ID: CUST_008
+2025-06-06 09:31:09,058 - WARNING - Customer ID CUST_008 not found in data.
+2025-06-06 09:32:27,048 - INFO - Generating recommendations for Customer ID: CUST008
+2025-06-06 09:32:27,127 - INFO - Recommendations for CUST008: ['Product_119', 'Product_176', 'Product_073', 'Product_008', 'Product_081']
+2025-06-06 09:32:33,191 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-06 09:32:33,273 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073', 'Product_041', 'Product_016']
+2025-06-06 09:53:11,281 - INFO - CSV updated, total rows: 24925
+2025-06-06 09:53:11,361 - INFO - Starting feature preparation.
+2025-06-06 09:53:14,131 - INFO - Optimal clusters found: 2
+2025-06-06 09:53:14,147 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 09:53:14,149 - INFO - Model retrained.
+2025-06-06 09:53:19,749 - INFO - CSV updated, total rows: 24925
+2025-06-06 09:53:19,822 - INFO - Starting feature preparation.
+2025-06-06 09:53:20,948 - INFO - Optimal clusters found: 2
+2025-06-06 09:53:20,959 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 09:53:20,966 - INFO - Model retrained.
+2025-06-06 09:53:25,873 - INFO - CSV updated, total rows: 24925
+2025-06-06 09:53:25,951 - INFO - Starting feature preparation.
+2025-06-06 09:53:28,550 - INFO - Optimal clusters found: 2
+2025-06-06 09:53:28,572 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 09:53:28,576 - INFO - Model retrained.
+2025-06-06 10:03:03,847 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:03:03,921 - INFO - Starting feature preparation.
+2025-06-06 10:03:06,429 - INFO - Optimal clusters found: 2
+2025-06-06 10:03:06,438 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:03:06,448 - INFO - Model retrained.
+2025-06-06 10:06:42,251 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:06:42,411 - INFO - Starting feature preparation.
+2025-06-06 10:06:45,012 - INFO - Optimal clusters found: 2
+2025-06-06 10:06:45,025 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:06:45,030 - INFO - Model retrained.
+2025-06-06 10:08:05,346 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:08:05,418 - INFO - Starting feature preparation.
+2025-06-06 10:08:08,161 - INFO - Optimal clusters found: 2
+2025-06-06 10:08:08,174 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:08:08,176 - INFO - Model retrained.
+2025-06-06 10:13:42,407 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:13:42,485 - INFO - Starting feature preparation.
+2025-06-06 10:13:45,105 - INFO - Optimal clusters found: 2
+2025-06-06 10:13:45,123 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:13:45,125 - INFO - Model retrained.
+2025-06-06 10:15:22,478 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:15:22,576 - INFO - Starting feature preparation.
+2025-06-06 10:15:25,270 - INFO - Optimal clusters found: 2
+2025-06-06 10:15:25,284 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:15:25,288 - INFO - Model retrained.
+2025-06-06 10:17:31,702 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:17:31,804 - INFO - Starting feature preparation.
+2025-06-06 10:17:34,516 - INFO - Optimal clusters found: 2
+2025-06-06 10:17:34,529 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:17:34,534 - INFO - Model retrained.
+2025-06-06 10:18:37,146 - INFO - CSV updated, total rows: 24925
+2025-06-06 10:18:37,285 - INFO - Starting feature preparation.
+2025-06-06 10:18:39,894 - INFO - Optimal clusters found: 2
+2025-06-06 10:18:39,907 - INFO - Assigned clusters for 1002 customers.
+2025-06-06 10:18:39,907 - INFO - Model retrained.
+2025-06-06 10:19:32,844 - INFO - CSV created.
+2025-06-06 10:19:32,864 - INFO - Starting feature preparation.
+2025-06-06 10:19:35,024 - INFO - Optimal clusters found: 2
+2025-06-06 10:19:35,032 - INFO - Assigned clusters for 5 customers.
+2025-06-06 10:19:35,034 - INFO - Model retrained.
+2025-06-06 10:20:52,479 - INFO - CSV updated, total rows: 40
+2025-06-06 10:20:52,497 - INFO - Starting feature preparation.
+2025-06-06 10:20:54,629 - INFO - Optimal clusters found: 2
+2025-06-06 10:20:54,636 - INFO - Assigned clusters for 5 customers.
+2025-06-06 10:20:54,636 - INFO - Model retrained.
+2025-06-06 10:22:32,219 - INFO - CSV updated, total rows: 40
+2025-06-06 10:22:32,227 - INFO - Starting feature preparation.
+2025-06-06 10:22:34,326 - INFO - Optimal clusters found: 2
+2025-06-06 10:22:34,332 - INFO - Assigned clusters for 5 customers.
+2025-06-06 10:22:34,334 - INFO - Model retrained.
+2025-06-06 10:23:33,049 - INFO - CSV created.
+2025-06-06 10:23:33,053 - INFO - Starting feature preparation.
+2025-06-06 10:23:35,254 - INFO - Optimal clusters found: 2
+2025-06-06 10:23:35,261 - INFO - Assigned clusters for 5 customers.
+2025-06-06 10:23:35,331 - INFO - Model retrained.
+2025-06-08 18:20:02,245 - INFO - CSV updated, total rows: 40
+2025-06-08 18:20:02,256 - INFO - Starting feature preparation.
+2025-06-08 18:20:04,079 - INFO - Optimal clusters found: 2
+2025-06-08 18:20:04,082 - INFO - Assigned clusters for 5 customers.
+2025-06-08 18:20:04,083 - INFO - Model retrained.
+2025-06-08 18:44:59,516 - INFO - CSV updated, total rows: 24905
+2025-06-08 18:44:59,560 - INFO - Starting feature preparation.
+2025-06-08 18:45:01,464 - INFO - Optimal clusters found: 2
+2025-06-08 18:45:01,487 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 18:45:01,489 - INFO - Model retrained.
+2025-06-08 18:49:23,246 - INFO - CSV updated, total rows: 24925
+2025-06-08 18:49:23,285 - INFO - Starting feature preparation.
+2025-06-08 18:49:25,211 - INFO - Optimal clusters found: 2
+2025-06-08 18:49:25,225 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 18:49:25,228 - INFO - Model retrained.
+2025-06-08 18:49:37,026 - INFO - CSV updated, total rows: 24925
+2025-06-08 18:49:37,073 - INFO - Starting feature preparation.
+2025-06-08 18:49:39,129 - INFO - Optimal clusters found: 2
+2025-06-08 18:49:39,139 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 18:49:39,143 - INFO - Model retrained.
+2025-06-08 18:50:31,721 - INFO - CSV updated, total rows: 24925
+2025-06-08 18:50:31,763 - INFO - Starting feature preparation.
+2025-06-08 18:50:33,639 - INFO - Optimal clusters found: 2
+2025-06-08 18:50:33,648 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 18:50:33,650 - INFO - Model retrained.
+2025-06-08 18:51:29,122 - INFO - CSV updated, total rows: 24925
+2025-06-08 18:51:29,174 - INFO - Starting feature preparation.
+2025-06-08 18:51:31,065 - INFO - Optimal clusters found: 2
+2025-06-08 18:51:31,075 - INFO - Assigned clusters for 1002 customers.
+2025-06-08 18:51:31,081 - INFO - Model retrained.
+2025-06-08 18:52:37,394 - INFO - CSV created.
+2025-06-08 18:52:37,400 - INFO - Starting feature preparation.
+2025-06-08 18:52:39,020 - INFO - Optimal clusters found: 2
+2025-06-08 18:52:39,020 - INFO - Assigned clusters for 5 customers.
+2025-06-08 18:52:39,024 - INFO - Model retrained.
+2025-06-08 18:53:13,042 - INFO - CSV updated, total rows: 40
+2025-06-08 18:53:13,045 - INFO - Starting feature preparation.
+2025-06-08 18:53:14,607 - INFO - Optimal clusters found: 2
+2025-06-08 18:53:14,610 - INFO - Assigned clusters for 5 customers.
+2025-06-08 18:53:14,611 - INFO - Model retrained.
+2025-06-08 18:57:45,383 - INFO - CSV created.
+2025-06-08 18:57:45,398 - INFO - Starting feature preparation.
+2025-06-08 18:57:46,941 - INFO - Optimal clusters found: 2
+2025-06-08 18:57:46,944 - INFO - Assigned clusters for 5 customers.
+2025-06-08 18:57:46,983 - INFO - Model retrained.
