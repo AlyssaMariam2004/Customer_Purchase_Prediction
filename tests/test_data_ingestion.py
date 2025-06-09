@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock # to simulate MySQL and pandas behavior
 from app import data_ingestion
 
-@pytest.mark.integration
+#Tests if fetch_data() connects to MySQL and returns a non-empty DataFrame
+@pytest.mark.integration 
 def test_fetch_data_returns_dataframe():
     try:
         df = data_ingestion.fetch_data()
@@ -13,7 +14,9 @@ def test_fetch_data_returns_dataframe():
     assert isinstance(df, pd.DataFrame)
     assert not df.empty
 
+
 @pytest.fixture(autouse=True)
+#Ensures the CSV file used in tests is cleaned up after test
 def cleanup():
     if os.path.exists(data_ingestion.CSV_PATH):
         os.remove(data_ingestion.CSV_PATH)
@@ -21,6 +24,7 @@ def cleanup():
     if os.path.exists(data_ingestion.CSV_PATH):
         os.remove(data_ingestion.CSV_PATH)
 
+#Unit test using mocks to verify MySQL + pandas logic
 def test_fetch_data_calls_mysql_connector_and_reads_sql():
     mock_conn = MagicMock()
     mock_df = pd.DataFrame({"col1": [1, 2]})
@@ -33,6 +37,7 @@ def test_fetch_data_calls_mysql_connector_and_reads_sql():
         mock_conn.close.assert_called_once()
         pd.testing.assert_frame_equal(result, mock_df)
 
+#Checks if CSV is correctly created from fetched data
 def test_sync_data_creates_csv(tmp_path):
     dummy_df = pd.DataFrame({"A": [1], "B": [2]})
     data_ingestion.CSV_PATH = os.path.join(tmp_path, "test.csv")
@@ -46,6 +51,7 @@ def test_sync_data_creates_csv(tmp_path):
         df = pd.read_csv(data_ingestion.CSV_PATH)
         pd.testing.assert_frame_equal(df, dummy_df)
 
+#checks deduplication after appending new data
 def test_sync_data_appends_and_dedupes(tmp_path):
     old_df = pd.DataFrame({"A": [1, 2], "B": [3, 4]})
     new_df = pd.DataFrame({"A": [2, 3], "B": [4, 5]})  # overlap on A=2

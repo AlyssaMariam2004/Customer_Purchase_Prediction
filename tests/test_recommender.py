@@ -14,6 +14,7 @@ def make_test_data():
     }
     return pd.DataFrame(data)
 
+#Customers are clustered correctly
 def test_prepare_features_creates_clusters():
     df = make_test_data()
     result = recommender.prepare_features(df)
@@ -22,6 +23,7 @@ def test_prepare_features_creates_clusters():
     assert set(result.index) == set(df["Customer ID"].unique())
     assert not result["Cluster"].isnull().any()
 
+#testing the recommender logic works and avoids duplicate suggestions
 def test_recommend_products_returns_list_and_nonempty():
     df = make_test_data()
     recommender.prepare_features(df)
@@ -36,18 +38,18 @@ def test_recommend_products_returns_list_and_nonempty():
     # Length <= top_n
     assert len(recs) <= 3
 
+#test if unknown customer accesses 
 def test_recommend_products_unknown_customer():
     df = make_test_data()
     recommender.prepare_features(df)
-
     recs = recommender.recommend_products("UNKNOWN_CUSTOMER")
     assert recs == ["Customer ID not found"]
 
+#tests the case when the customer is present but has no purchase history
 def test_recommend_products_no_purchase_data(monkeypatch):
     df = make_test_data()
     recommender.prepare_features(df)
 
-    # Add a customer with no purchase data in global df
     recommender.df = pd.concat([recommender.df, pd.DataFrame({
         "Customer ID": ["NO_PURCHASE"],
         "Product ID": [None],
@@ -61,10 +63,8 @@ def test_recommend_products_no_purchase_data(monkeypatch):
     recs = recommender.recommend_products("NO_PURCHASE")
     assert recs == ["No product data for this customer"]
 
-def test_recommend_products_no_purchase_data():
-    result = recommender.recommend_products("NON_EXISTENT_CUSTOMER")
-    assert result == ["Customer ID not found"]
 
+#test for clustering
 def test_find_optimal_clusters_min_data():
     result = recommender.find_optimal_clusters(np.array([[1.0], [2.0]]))
     assert result == 2
