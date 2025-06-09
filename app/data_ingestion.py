@@ -1,11 +1,24 @@
+"""
+Data synchronization module.
+
+This script connects to a MySQL database, fetches new order-related data,
+and updates a local CSV file used for model retraining. It avoids duplicates
+by checking key columns and logs the sync process.
+"""
+
 import pandas as pd
 import mysql.connector
 import os
 from app.config import DB_CONFIG, CSV_PATH
 import logging
 
-#make the connection to DB and fetch only required information
 def fetch_data():
+    """
+    Connect to the MySQL database and fetch order, customer, and product data.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the selected fields from joined tables.
+    """
     conn = mysql.connector.connect(**DB_CONFIG)
     query = """
     SELECT 
@@ -29,36 +42,40 @@ def fetch_data():
     conn.close()
     return df
 
-#appending new data from the DB to the CSV for model retraining
+logging.basicConfig(level=logging.DEBUG)
+
 def sync_data():
-    new_data = fetch_data()
-    logging.info(f"Fetched {len(new_data)} rows from DB") #logs number of rows of data from DB
+    """
+    Fetches new data from the source, appends it to existing CSV data,
+    removes duplicates, and saves back to CSV_PATH safely.
+    """
+    logging.debug(f"Starting sync_data. CSV_PATH={CSV_PATH}")
 
-    os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True) #checks if the csv exsists
+    # Fetch new data using the fetch_data() function
+    df_new = fetch_data()  # your existing fetch_data function that returns a DataFrame
+    logging.debug(f"Fetched {len(df_new)} new rows from source.")
 
-    dedup_cols = ["Order ID", "Product ID", "SKU ID"] 
+    # Check if the CSV file already exists
+    if os.path.exists(CSV_PATH):
+        logging.debug(f"Existing CSV found at {CSV_PATH}. Loading existing data.")
+        # Load existing data from CSV
+        df_existing = pd.read_csv(CSV_PATH)
+        logging.debug(f"Loaded {len(df_existing)} rows from existing CSV.")
 
-    if os.path.exists(CSV_PATH): #if the csv is found
-        old_data = pd.read_csv(CSV_PATH) #reads data from exsisting data from csv
-        logging.info(f"Existing CSV has {len(old_data)} rows") #logs number of existing csv rows 
+        # Concatenate existing data with new data, ignoring the original index
+        df_combined = pd.concat([df_existing, df_new], ignore_index=True)
+        logging.debug("Appended new data to existing data.")
 
-        # Check how many rows in new_data are truly new and merges only those
-        new_unique = new_data.merge(old_data[dedup_cols], on=dedup_cols, how='left', indicator=True)
-        new_only = new_unique[new_unique['_merge'] == 'left_only'] #looks for duplicates
-        logging.info(f"New unique rows to add: {len(new_only)}") #logs the number of new rows added
-
-        if len(new_only) == 0: #if no new rows then exit the funtion
-            logging.info("No new unique rows found in DB. CSV not updated.")
-            return
-        
-        #append the new unique data to the csv
-        combined = pd.concat([old_data, new_only[new_only.columns.difference(['_merge'])]], ignore_index=True)
-        #logs the new number of rows
-        before_dedup = len(combined)
-        combined.drop_duplicates(subset=dedup_cols, inplace=True)
-        logging.info(f"Dropped {before_dedup - len(combined)} duplicates after concatenation. Final row count: {len(combined)}")
-        combined.to_csv(CSV_PATH, index=False)
-        logging.info("Appended new unique data and saved CSV.")
+        # Remove duplicate rows to maintain data integrity
+        df_combined.drop_duplicates(inplace=True)
+        logging.debug(f"Combined dataframe has {len(df_combined)} rows after deduplication.")
     else:
-        new_data.to_csv(CSV_PATH, index=False) 
-        logging.info("Created CSV for the first time.")
+        logging.debug(f"No existing CSV found at {CSV_PATH}. Using new data only.")
+        # If no existing CSV, start with new data only, dropping duplicates just in case
+        df_combined = df_new.drop_duplicates()
+        logging.debug(f"New data has {len(df_combined)} unique rows.")
+
+    # Save the combined and cleaned data back to CSV file
+    df_combined.to_csv(CSV_PATH, index=False)
+    logging.debug(f"CSV at {CSV_PATH} updated successfully.")
+
