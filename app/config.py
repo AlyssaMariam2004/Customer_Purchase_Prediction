@@ -1,23 +1,29 @@
+from configparser import RawConfigParser
 import os
 
-# Get project root
+# Setup config parser
+config = RawConfigParser()
+config.read(os.path.join(os.path.dirname(__file__), "config.ini"))
+
+# Project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#Database Configuration
+# Database Configuration
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "22mid0076",
-    "database": "SalesDB"
+    "host": config["database"]["host"],
+    "user": config["database"]["user"],
+    "password": config["database"]["password"],
+    "database": config["database"]["database"]
 }
 
-CSV_PATH = os.path.join(BASE_DIR, "data", "NewData1.csv")
+# Dataset CSV path
+CSV_PATH = os.path.join(BASE_DIR, "data", config["paths"]["csv_filename"])
 
-#Scheduling model retraining
-RETRAIN_INTERVAL = 48 * 60 * 60  # 48 hours
-ROW_GROWTH_THRESHOLD = 10 #number of new enteries 
+# Retraining parameters
+RETRAIN_INTERVAL = int(config["retraining"]["interval_seconds"])
+ROW_GROWTH_THRESHOLD = int(config["retraining"]["row_growth_threshold"])
 
-#Logging Setup
-LOG_FILE = os.path.join(BASE_DIR, "logs", "recommendation_system.log")
-LOG_LEVEL = "INFO"
-LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+# Logging
+LOG_FILE = os.path.join(BASE_DIR, config["logging"]["log_file"])
+LOG_LEVEL = config["logging"]["log_level"]
+LOG_FORMAT = config["logging"]["log_format"]  

@@ -302,3 +302,22 @@
 2025-06-08 23:03:56,031 - INFO - Optimal clusters found: 2
 2025-06-08 23:03:56,044 - INFO - Assigned clusters for 1002 customers.
 2025-06-08 23:03:56,050 - INFO - Model retrained.
+2025-06-08 23:16:54,667 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-08 23:16:54,716 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073', 'Product_041', 'Product_016']
+2025-06-08 23:17:13,727 - INFO - Generating recommendations for Customer ID: CUST_NEW001
+2025-06-08 23:17:13,773 - INFO - Recommendations for CUST_NEW001: ['Product_168', 'Product_169', 'Product_173', 'Product_113', 'Product_190']
+2025-06-09 08:45:50,570 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-09 08:45:50,716 - INFO - Fetched 20 rows from DB
+2025-06-09 08:45:50,784 - INFO - Existing CSV has 24859 rows
+2025-06-09 08:45:50,821 - INFO - New unique rows to add: 0
+2025-06-09 08:45:50,821 - INFO - No new unique rows found in DB. CSV not updated.
+2025-06-09 08:45:50,877 - INFO - Starting feature preparation.
+2025-06-09 08:45:53,809 - INFO - Optimal clusters found: 2
+2025-06-09 08:45:53,815 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 08:45:53,833 - INFO - Model retrained.
+2025-06-09 08:48:34,994 - INFO - Generating recommendations for Customer ID: string
+2025-06-09 08:48:34,994 - WARNING - Customer ID string not found in data.
+2025-06-09 08:48:47,068 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-09 08:48:47,152 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073']
+2025-06-09 08:48:57,669 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-09 08:48:57,756 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073', 'Product_041', 'Product_016']
