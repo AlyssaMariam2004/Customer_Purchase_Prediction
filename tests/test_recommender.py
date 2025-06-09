@@ -60,6 +60,23 @@ def test_recommend_products_no_purchase_data(monkeypatch):
         "Cluster": [recommender.final_df.loc["CUST1", "Cluster"]]
     })], ignore_index=True)
 
+    # Manually add cluster info for the new customer to both df and final_df
+    cluster = recommender.final_df.loc["CUST1", "Cluster"]
+
+    new_row = pd.DataFrame({
+        "Customer ID": ["NO_PURCHASE"],
+        "Product ID": [None],
+        "Quantity": [0],
+        "Customer Age": [50],
+        "Customer Gender": ["M"],
+        "Warehouse ID": ["WH1"],
+        "Cluster": [cluster]
+    })
+
+    recommender.df = pd.concat([recommender.df, new_row], ignore_index=True)
+    recommender.final_df.loc["NO_PURCHASE"] = cluster
+
+
     recs = recommender.recommend_products("NO_PURCHASE")
     assert recs == ["No product data for this customer"]
 
