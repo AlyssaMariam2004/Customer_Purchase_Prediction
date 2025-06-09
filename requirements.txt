@@ -7,3 +7,4 @@ numpy
 sqlalchemy
 mysql-connector-python
 pytest
+apscheduler

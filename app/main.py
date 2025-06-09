@@ -1,8 +1,15 @@
 """
-Main FastAPI application entry point.
+Main FastAPI application entry point with background scheduling.
 
-This script sets up the FastAPI app, configures logging, handles startup tasks
-such as syncing data and retraining the model, and includes API routes.
+This script initializes the FastAPI app, sets up logging, and manages the app's
+lifespan through the async context manager. It performs:
+
+- Initial data sync and model retraining if a CSV already exists.
+- Background scheduling of data sync and conditional retraining every 2 minutes.
+
+The scheduler ensures that fresh data from the MySQL database is periodically
+fetched and merged into the CSV, and that the model is retrained based on time
+and data growth thresholds.
 """
 
 from fastapi import FastAPI
@@ -10,36 +17,55 @@ from contextlib import asynccontextmanager
 from app.routes import router
 from app.logger import setup_logging
 from app.config import CSV_PATH
+from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import logging
+
+# Initialize logging early, before app creation and any logs
+setup_logging()
+
+# Background scheduler that runs independently of the request/response cycle
+scheduler = BackgroundScheduler()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
-    FastAPI lifespan context manager.
+    Lifespan context manager for the FastAPI app.
 
-    This runs once when the app starts and once when it shuts down.
-    - On startup, checks if the CSV file exists.
-    - If it exists, it syncs the latest data from the database and retrains the model.
-    - If not, logs a warning and skips sync and retraining.
+    This function handles tasks that should run when the app starts and stops.
+
+    On startup:
+    - Schedules periodic jobs to sync data from the database and retrain the model.
+    - Runs an initial sync and retrain if the CSV file exists.
+
+    On shutdown:
+    - Gracefully stops the background scheduler.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
     """
     from app.data_ingestion import sync_data
-    from app.trainer import retrain_model
+    from app.trainer import retrain_model, maybe_retrain_model
 
+    # Start periodic sync and retrain jobs
+    scheduler.add_job(sync_data, 'interval', minutes=10, id='sync_data')
+    scheduler.add_job(maybe_retrain_model, 'interval', minutes=10, id='maybe_retrain_model')
+    scheduler.start()
+    logging.info("Background scheduler started.")
+
+    # Initial data load and retraining
     if os.path.exists(CSV_PATH):
-        logging.info("Found existing CSV. Running sync and possible retrain.")
+        logging.info("Found existing CSV. Running initial sync and retrain.")
         sync_data()
         retrain_model()
     else:
         logging.warning(f"CSV not found at {CSV_PATH}. Skipping initial sync and retrain.")
 
-    yield  # Start serving requests
+    yield  # Control is handed over to the FastAPI server
 
-# Create the FastAPI application instance with lifespan handler
+    # Stop scheduled jobs when app shuts down
+    scheduler.shutdown()
+    logging.info("Scheduler shut down.")
+
 app = FastAPI(lifespan=lifespan)
-
-# Set up file-based logging
-setup_logging()
-
-# Register all API routes from the router module
 app.include_router(router)

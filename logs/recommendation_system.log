@@ -321,3 +321,27 @@
 2025-06-09 08:48:47,152 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073']
 2025-06-09 08:48:57,669 - INFO - Generating recommendations for Customer ID: CUST001
 2025-06-09 08:48:57,756 - INFO - Recommendations for CUST001: ['Product_004', 'Product_117', 'Product_073', 'Product_041', 'Product_016']
+2025-06-09 20:58:04,375 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-09 20:58:04,571 - INFO - Starting feature preparation.
+2025-06-09 20:58:06,478 - INFO - Optimal clusters found: 2
+2025-06-09 20:58:06,482 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 20:58:06,489 - INFO - Model retrained.
+2025-06-09 21:12:22,548 - INFO - Starting feature preparation.
+2025-06-09 21:12:22,859 - INFO - Optimal clusters found: 2
+2025-06-09 21:12:22,865 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 21:12:22,874 - INFO - Model retrained.
+2025-06-09 21:12:22,874 - INFO - Generating recommendations for Customer ID: CUST_NEW100
+2025-06-09 21:12:22,874 - WARNING - Customer ID CUST_NEW100 not found in data.
+2025-06-09 21:34:00,056 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 21:34:00,056 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 21:34:00,056 - INFO - Added job "sync_data" to job store "default"
+2025-06-09 21:34:00,056 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-09 21:34:00,056 - INFO - Scheduler started
+2025-06-09 21:34:00,067 - INFO - Background scheduler started.
+2025-06-09 21:34:00,067 - INFO - Found existing CSV. Running initial sync and retrain.
+2025-06-09 21:34:00,324 - INFO - Starting feature preparation.
+2025-06-09 21:34:02,174 - INFO - Optimal clusters found: 9
+2025-06-09 21:34:02,195 - INFO - Assigned clusters for 1012 customers.
+2025-06-09 21:34:02,198 - INFO - Model retrained.
+2025-06-09 21:35:15,200 - INFO - Scheduler has been shut down
+2025-06-09 21:35:15,200 - INFO - Scheduler shut down.
