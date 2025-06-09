@@ -63,8 +63,10 @@ def test_recommend_products_no_purchase_data(monkeypatch):
     recs = recommender.recommend_products("NO_PURCHASE")
     assert recs == ["No product data for this customer"]
 
+def test_recommend_products_no_purchase_data():
+    result = recommender.recommend_products("NON_EXISTENT_CUSTOMER")
+    assert result == ["Customer ID not found"]
 
-#test for clustering
 def test_find_optimal_clusters_min_data():
     result = recommender.find_optimal_clusters(np.array([[1.0], [2.0]]))
     assert result == 2
