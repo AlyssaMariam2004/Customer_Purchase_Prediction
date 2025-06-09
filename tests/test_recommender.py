@@ -46,7 +46,7 @@ def test_recommend_products_unknown_customer():
     assert recs == ["Customer ID not found"]
 
 #tests the case when the customer is present but has no purchase history
-def test_recommend_products_no_purchase_data():
+def test_recommend_products_no_purchase_data(monkeypatch):
     df = make_test_data()
     recommender.prepare_features(df)
 
