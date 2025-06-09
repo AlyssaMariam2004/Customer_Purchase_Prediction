@@ -375,3 +375,30 @@
 2025-06-09 09:54:03,587 - INFO - Optimal clusters found: 2
 2025-06-09 09:54:03,599 - INFO - Assigned clusters for 1002 customers.
 2025-06-09 09:54:03,601 - INFO - Model retrained.
+2025-06-09 09:59:07,153 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-09 09:59:07,184 - INFO - Fetched 20 rows from DB
+2025-06-09 09:59:07,218 - INFO - Existing CSV has 24859 rows
+2025-06-09 09:59:07,228 - INFO - New unique rows to add: 0
+2025-06-09 09:59:07,228 - INFO - No new unique rows found in DB. CSV not updated.
+2025-06-09 09:59:07,257 - INFO - Starting feature preparation.
+2025-06-09 09:59:09,198 - INFO - Optimal clusters found: 2
+2025-06-09 09:59:09,217 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 09:59:09,217 - INFO - Model retrained.
+2025-06-09 10:10:23,954 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-09 10:10:23,976 - INFO - Fetched 20 rows from DB
+2025-06-09 10:10:24,012 - INFO - Existing CSV has 24859 rows
+2025-06-09 10:10:24,025 - INFO - New unique rows to add: 0
+2025-06-09 10:10:24,025 - INFO - No new unique rows found in DB. CSV not updated.
+2025-06-09 10:10:24,055 - INFO - Starting feature preparation.
+2025-06-09 10:10:25,955 - INFO - Optimal clusters found: 2
+2025-06-09 10:10:25,974 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 10:10:25,976 - INFO - Model retrained.
+2025-06-09 10:10:48,300 - INFO - Found existing CSV. Running sync and possible retrain.
+2025-06-09 10:10:48,330 - INFO - Fetched 20 rows from DB
+2025-06-09 10:10:48,363 - INFO - Existing CSV has 24859 rows
+2025-06-09 10:10:48,373 - INFO - New unique rows to add: 0
+2025-06-09 10:10:48,373 - INFO - No new unique rows found in DB. CSV not updated.
+2025-06-09 10:10:48,405 - INFO - Starting feature preparation.
+2025-06-09 10:10:50,317 - INFO - Optimal clusters found: 2
+2025-06-09 10:10:50,327 - INFO - Assigned clusters for 1002 customers.
+2025-06-09 10:10:50,329 - INFO - Model retrained.
