@@ -2,50 +2,32 @@ import pandas as pd
 import time
 import logging
 import os
-import pickle
+import joblib
 from datetime import datetime, timedelta
-from app.config import CSV_PATH, RETRAIN_INTERVAL, ROW_GROWTH_THRESHOLD, MODEL_DIR
-from app.recommender import prepare_features
+from app.config import CSV_PATH, RETRAIN_INTERVAL, ROW_GROWTH_THRESHOLD, MODEL_DIR, DF_PATH, MODEL_PATH
+from app.recommender import prepare_features, load_pickled_data
 
-# Global state
-df = pd.DataFrame()
-final_df = pd.DataFrame()
 last_retrain_time = time.time()
 last_row_count = 0
 
 def save_model_with_timestamp(df, final_df):
-    """
-    Save df and final_df with timestamp, and as 'latest' versions.
-    Also cleans up old timestamped files.
-    """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    # File paths
     df_ts_path = os.path.join(MODEL_DIR, f"df_{timestamp}.pkl")
     final_df_ts_path = os.path.join(MODEL_DIR, f"final_df_{timestamp}.pkl")
-    df_latest_path = os.path.join(MODEL_DIR, "df.pkl")
-    final_df_latest_path = os.path.join(MODEL_DIR, "final_df.pkl")
 
     # Save timestamped
-    with open(df_ts_path, "wb") as f:
-        pickle.dump(df, f)
-    with open(final_df_ts_path, "wb") as f:
-        pickle.dump(final_df, f)
+    joblib.dump(df, df_ts_path)
+    joblib.dump(final_df, final_df_ts_path)
 
-    # Save latest (overwrite)
-    with open(df_latest_path, "wb") as f:
-        pickle.dump(df, f)
-    with open(final_df_latest_path, "wb") as f:
-        pickle.dump(final_df, f)
+    # Save latest
+    joblib.dump(df, DF_PATH)
+    joblib.dump(final_df, MODEL_PATH)
 
     logging.info(f"Models saved: {df_ts_path}, {final_df_ts_path}")
     cleanup_old_pickles(MODEL_DIR)
 
 def cleanup_old_pickles(directory, retention_days=365):
-    """
-    Delete timestamped pickle files older than `retention_days`.
-    Keeps only recent models.
-    """
     cutoff = datetime.now() - timedelta(days=retention_days)
 
     for filename in os.listdir(directory):
@@ -60,30 +42,23 @@ def cleanup_old_pickles(directory, retention_days=365):
                 logging.warning(f"Skipping {filename}: {e}")
 
 def retrain_model():
-    """
-    Retrain the model if sufficient time or data change has occurred.
-    """
-    global df, final_df, last_retrain_time, last_row_count
+    global last_retrain_time, last_row_count
 
-    # Load latest CSV
-    df = pd.read_csv(CSV_PATH)
+    df_raw = pd.read_csv(CSV_PATH)
+    final_df_prepared = prepare_features(df_raw)
 
-    # Prepare features
-    final_df = prepare_features(df)
+    save_model_with_timestamp(df_raw, final_df_prepared)
 
-    # Save model
-    save_model_with_timestamp(df, final_df)
+    # Load into memory for use after retraining
+    from app.recommender import load_pickled_data
+    load_pickled_data()
 
-    # Update retrain state
     last_retrain_time = time.time()
-    last_row_count = len(df)
+    last_row_count = len(df_raw)
 
-    logging.info("Model retrained and saved.")
+    logging.info("Model retrained, saved, and loaded.")
 
 def maybe_retrain_model():
-    """
-    Check whether retraining is needed based on time or row count.
-    """
     global last_row_count
 
     current_time = time.time()
@@ -92,3 +67,4 @@ def maybe_retrain_model():
     if (current_time - last_retrain_time > RETRAIN_INTERVAL or
         len(new_data) - last_row_count > ROW_GROWTH_THRESHOLD):
         retrain_model()
+        load_pickled_data() 

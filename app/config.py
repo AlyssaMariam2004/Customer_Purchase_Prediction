@@ -51,10 +51,6 @@ LOG_FORMAT = config["logging"]["log_format"]
 #Default recommendations to be shown
 TOP_N_DEFAULT = int(config["model"]["top_n"])
 
-MODEL_PATH = os.path.join(
-    BASE_DIR,
-    config["paths"]["model_dir"],
-    config["paths"]["model_filename"]
-)
-
 MODEL_DIR = os.path.join(BASE_DIR, config["paths"]["model_dir"])
+MODEL_PATH = os.path.join(MODEL_DIR, config["paths"]["model_filename"])
+DF_PATH = os.path.join(MODEL_DIR, config["paths"]["df_filename"])
