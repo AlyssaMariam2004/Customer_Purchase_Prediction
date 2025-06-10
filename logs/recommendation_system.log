@@ -356,3 +356,91 @@
 2025-06-09 21:35:19,878 - INFO - Optimal clusters found: 9
 2025-06-09 21:35:19,893 - INFO - Assigned clusters for 1012 customers.
 2025-06-09 21:35:19,903 - INFO - Model retrained.
+2025-06-10 11:53:02,786 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-10 11:53:02,787 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-10 11:53:02,787 - INFO - Added job "sync_data" to job store "default"
+2025-06-10 11:53:02,787 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-10 11:53:02,787 - INFO - Scheduler started
+2025-06-10 11:53:02,787 - INFO - Background scheduler started.
+2025-06-10 11:53:02,787 - INFO - Found existing CSV. Running initial sync and retrain.
+2025-06-10 11:53:03,086 - INFO - Starting feature preparation.
+2025-06-10 11:53:06,628 - INFO - Optimal clusters found: 9
+2025-06-10 11:53:06,641 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 11:53:06,647 - INFO - Model retrained.
+2025-06-10 12:03:02,797 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 12:03:02 IST)" (scheduled at 2025-06-10 12:03:02.786072+05:30)
+2025-06-10 12:03:02,798 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 12:03:02 IST)" (scheduled at 2025-06-10 12:03:02.786877+05:30)
+2025-06-10 12:03:02,853 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 12:13:02 IST)" executed successfully
+2025-06-10 12:03:03,001 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 12:13:02 IST)" executed successfully
+2025-06-10 12:13:02,801 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 12:23:02 IST)" (scheduled at 2025-06-10 12:13:02.786072+05:30)
+2025-06-10 12:13:02,801 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 12:23:02 IST)" (scheduled at 2025-06-10 12:13:02.786877+05:30)
+2025-06-10 12:13:02,883 - INFO - Starting feature preparation.
+2025-06-10 12:13:03,020 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 12:23:02 IST)" executed successfully
+2025-06-10 12:13:03,326 - INFO - Optimal clusters found: 9
+2025-06-10 12:13:03,339 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 12:13:03,343 - INFO - Model retrained.
+2025-06-10 12:13:03,343 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 12:23:02 IST)" executed successfully
+2025-06-10 12:15:38,259 - INFO - Scheduler has been shut down
+2025-06-10 12:15:38,259 - INFO - Scheduler shut down.
+2025-06-10 14:08:47,458 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-10 14:08:47,459 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-10 14:08:47,462 - INFO - Added job "sync_data" to job store "default"
+2025-06-10 14:08:47,464 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-10 14:08:47,464 - INFO - Scheduler started
+2025-06-10 14:08:47,467 - INFO - Background scheduler started.
+2025-06-10 14:08:47,468 - INFO - Found existing CSV. Running initial sync and retrain.
+2025-06-10 14:08:47,979 - INFO - Starting feature preparation.
+2025-06-10 14:08:51,000 - INFO - Optimal clusters found: 9
+2025-06-10 14:08:51,020 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 14:08:51,027 - INFO - Model retrained.
+2025-06-10 14:18:47,461 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:18:47 IST)" (scheduled at 2025-06-10 14:18:47.458972+05:30)
+2025-06-10 14:18:47,462 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:18:47 IST)" (scheduled at 2025-06-10 14:18:47.459973+05:30)
+2025-06-10 14:18:47,544 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:28:47 IST)" executed successfully
+2025-06-10 14:18:47,873 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:28:47 IST)" executed successfully
+2025-06-10 14:20:45,433 - INFO - Starting feature preparation.
+2025-06-10 14:20:45,953 - INFO - Optimal clusters found: 9
+2025-06-10 14:20:45,976 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 14:20:45,982 - INFO - Model retrained.
+2025-06-10 14:20:45,983 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-10 14:20:46,048 - INFO - Recommendations for CUST001: ['Product_190', 'Product_178', 'Product_073', 'Product_081', 'Product_117']
+2025-06-10 14:28:47,467 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:38:47 IST)" (scheduled at 2025-06-10 14:28:47.458972+05:30)
+2025-06-10 14:28:47,468 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:38:47 IST)" (scheduled at 2025-06-10 14:28:47.459973+05:30)
+2025-06-10 14:28:47,550 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:38:47 IST)" executed successfully
+2025-06-10 14:28:47,894 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:38:47 IST)" executed successfully
+2025-06-10 14:38:47,466 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:48:47 IST)" (scheduled at 2025-06-10 14:38:47.458972+05:30)
+2025-06-10 14:38:47,467 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:48:47 IST)" (scheduled at 2025-06-10 14:38:47.459973+05:30)
+2025-06-10 14:38:47,626 - INFO - Starting feature preparation.
+2025-06-10 14:38:47,849 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:48:47 IST)" executed successfully
+2025-06-10 14:38:48,345 - INFO - Optimal clusters found: 9
+2025-06-10 14:38:48,365 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 14:38:48,371 - INFO - Model retrained.
+2025-06-10 14:38:48,372 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:48:47 IST)" executed successfully
+2025-06-10 14:48:47,463 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:58:47 IST)" (scheduled at 2025-06-10 14:48:47.458972+05:30)
+2025-06-10 14:48:47,464 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:58:47 IST)" (scheduled at 2025-06-10 14:48:47.459973+05:30)
+2025-06-10 14:48:47,573 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 14:58:47 IST)" executed successfully
+2025-06-10 14:48:47,884 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 14:58:47 IST)" executed successfully
+2025-06-10 14:51:46,553 - INFO - Starting feature preparation.
+2025-06-10 14:51:47,154 - INFO - Optimal clusters found: 9
+2025-06-10 14:51:47,175 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 14:51:47,181 - INFO - Model retrained.
+2025-06-10 14:51:47,183 - INFO - Generating recommendations for Customer ID: CUST001
+2025-06-10 14:51:47,235 - INFO - Recommendations for CUST001: ['Product_190', 'Product_178', 'Product_073', 'Product_081', 'Product_117']
+2025-06-10 14:52:29,688 - INFO - Generating recommendations for Customer ID: CUST1234567
+2025-06-10 14:52:29,688 - WARNING - Customer ID CUST1234567 not found in data.
+2025-06-10 14:58:47,470 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:08:47 IST)" (scheduled at 2025-06-10 14:58:47.458972+05:30)
+2025-06-10 14:58:47,470 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:08:47 IST)" (scheduled at 2025-06-10 14:58:47.459973+05:30)
+2025-06-10 14:58:47,547 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:08:47 IST)" executed successfully
+2025-06-10 14:58:47,812 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:08:47 IST)" executed successfully
+2025-06-10 15:08:47,475 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:18:47 IST)" (scheduled at 2025-06-10 15:08:47.458972+05:30)
+2025-06-10 15:08:47,475 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:18:47 IST)" (scheduled at 2025-06-10 15:08:47.459973+05:30)
+2025-06-10 15:08:47,693 - INFO - Starting feature preparation.
+2025-06-10 15:08:48,018 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:18:47 IST)" executed successfully
+2025-06-10 15:08:48,513 - INFO - Optimal clusters found: 9
+2025-06-10 15:08:48,536 - INFO - Assigned clusters for 1012 customers.
+2025-06-10 15:08:48,543 - INFO - Model retrained.
+2025-06-10 15:08:48,545 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:18:47 IST)" executed successfully
+2025-06-10 15:18:47,470 - INFO - Running job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:28:47 IST)" (scheduled at 2025-06-10 15:18:47.458972+05:30)
+2025-06-10 15:18:47,471 - INFO - Running job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:28:47 IST)" (scheduled at 2025-06-10 15:18:47.459973+05:30)
+2025-06-10 15:18:47,549 - INFO - Job "maybe_retrain_model (trigger: interval[0:10:00], next run at: 2025-06-10 15:28:47 IST)" executed successfully
+2025-06-10 15:18:47,789 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:28:47 IST)" executed successfully
+2025-06-10 15:18:51,291 - INFO - Scheduler has been shut down
+2025-06-10 15:18:51,292 - INFO - Scheduler shut down.

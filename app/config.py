@@ -1,7 +1,7 @@
 """
 Configuration module for the project.
 
-This script reads settings from a `config.ini` file and exposes them as constants
+This script reads settings from a 'config.ini' file and exposes them as constants
 to be used across the application. It handles paths, database credentials,
 retraining logic parameters, and logging configurations.
 
@@ -48,4 +48,13 @@ LOG_LEVEL = config["logging"]["log_level"]
 # Format string for log messages
 LOG_FORMAT = config["logging"]["log_format"]
 
+#Default recommendations to be shown
 TOP_N_DEFAULT = int(config["model"]["top_n"])
+
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    config["paths"]["model_dir"],
+    config["paths"]["model_filename"]
+)
+
+MODEL_DIR = os.path.join(BASE_DIR, config["paths"]["model_dir"])
