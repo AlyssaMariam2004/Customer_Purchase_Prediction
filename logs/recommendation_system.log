@@ -345,3 +345,14 @@
 2025-06-09 21:34:02,198 - INFO - Model retrained.
 2025-06-09 21:35:15,200 - INFO - Scheduler has been shut down
 2025-06-09 21:35:15,200 - INFO - Scheduler shut down.
+2025-06-09 21:35:17,682 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 21:35:17,682 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 21:35:17,682 - INFO - Added job "sync_data" to job store "default"
+2025-06-09 21:35:17,682 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-09 21:35:17,682 - INFO - Scheduler started
+2025-06-09 21:35:17,689 - INFO - Background scheduler started.
+2025-06-09 21:35:17,689 - INFO - Found existing CSV. Running initial sync and retrain.
+2025-06-09 21:35:17,918 - INFO - Starting feature preparation.
+2025-06-09 21:35:19,878 - INFO - Optimal clusters found: 9
+2025-06-09 21:35:19,893 - INFO - Assigned clusters for 1012 customers.
+2025-06-09 21:35:19,903 - INFO - Model retrained.
