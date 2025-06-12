@@ -612,3 +612,7 @@ ValueError: Invalid format: final_df must be a pandas DataFrame.
 2025-06-12 16:44:50 - INFO - Detected model change. Reloading...
 2025-06-12 16:44:50 - INFO - Loaded pickled model and dataframe successfully.
 2025-06-12 16:45:15 - WARNING - Invalid CustomerID requested: CUST001234567
+2025-06-12 19:08:23 - INFO - Successfully loaded pickled data and model.
+2025-06-12 19:08:23 - INFO - Detected model change. Reloading model...
+2025-06-12 19:08:23 - INFO - Successfully loaded pickled data and model.
+2025-06-12 19:08:29 - WARNING - Requested Customer ID not found: CUST001234567

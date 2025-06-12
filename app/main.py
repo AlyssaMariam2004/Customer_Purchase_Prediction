@@ -1,43 +1,72 @@
+"""
+main.py
+
+This is the entry point for the FastAPI application.
+It sets up logging, loads the initial machine learning model, 
+monitors for model file changes, and mounts all application routes.
+"""
+
+import os
+import asyncio
+import logging
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
+
 from app.routes import router
 from app.logger import setup_logging
 from app.recommender import load_pickled_data
-from app.config import MODEL_PATH
+from app.config import MODEL_FILE_PATH
 
-import asyncio
-import os
-import logging
-from contextlib import asynccontextmanager
-
+# Set up logging configuration
 setup_logging()
 
-MODEL_REFRESH_INTERVAL = 600
-last_model_update_time = 0
+# Interval in seconds to check for model file changes
+MODEL_REFRESH_INTERVAL = 600  # 10 minutes
+_last_model_update_time = 0  # Internal tracker for last model update timestamp
 
-async def monitor_model_updates():
-    global last_model_update_time
+
+async def monitor_model_updates() -> None:
+    """
+    Background task to monitor changes to the model file.
+    Reloads the model if the file has been updated.
+    """
+    global _last_model_update_time
     while True:
         try:
-            if os.path.exists(MODEL_PATH):
-                model_mtime = os.path.getmtime(MODEL_PATH)
-                if model_mtime > last_model_update_time:
-                    logging.info("Detected model change. Reloading...")
+            if os.path.exists(MODEL_FILE_PATH):
+                model_mtime = os.path.getmtime(MODEL_FILE_PATH)
+                if model_mtime > _last_model_update_time:
+                    logging.info("Detected model change. Reloading model...")
                     load_pickled_data()
-                    last_model_update_time = model_mtime
+                    _last_model_update_time = model_mtime
             else:
-                logging.warning("Model path not found for monitoring.")
+                logging.warning("Model file path does not exist.")
         except Exception as e:
-            logging.error(f"[Model Monitor] Error: {e}")
+            logging.error(f"[Model Monitor] Unexpected error: {e}")
+        
+        # Wait before checking again
         await asyncio.sleep(MODEL_REFRESH_INTERVAL)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """
+    Handles the application's startup and shutdown logic.
+
+    - Loads the model at startup
+    - Starts the background task to monitor model changes
+    """
     try:
-        load_pickled_data()
-        asyncio.create_task(monitor_model_updates())
+        load_pickled_data()  # Initial model load
+        asyncio.create_task(monitor_model_updates())  # Start model monitoring task
         yield
     except Exception as e:
-        logging.error(f"Error during app startup: {e}")
+        logging.error(f"[Startup] Failed during application lifespan: {e}")
 
+
+# Initialize FastAPI app with custom lifespan handler
 app = FastAPI(lifespan=lifespan)
+
+# Register API routes
 app.include_router(router)
+
