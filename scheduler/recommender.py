@@ -1,26 +1,60 @@
+"""
+recommender.py
+
+This module provides functions to:
+- Prepare customer features for clustering
+- Apply KMeans clustering
+- Determine the optimal number of clusters using silhouette score
+
+It outputs a processed DataFrame with cluster labels and logs each step for traceability.
+"""
+
 import pandas as pd
 import numpy as np
+import logging
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.metrics import silhouette_score
-import logging
 
-def prepare_features(raw_df):
+
+def prepare_features(raw_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Prepares features from the input DataFrame for clustering.
+
+    Steps:
+    - Aggregates product quantities per customer
+    - Extracts static customer features
+    - One-hot encodes categorical attributes
+    - Scales features using MinMaxScaler
+    - Applies KMeans clustering
+    - Maps cluster assignments back to the original raw_df
+
+    Parameters:
+    ----------
+    raw_df : pd.DataFrame
+        Raw transaction data including customer and product information.
+
+    Returns:
+    -------
+    final_df_local : pd.DataFrame
+        A DataFrame containing features and assigned cluster labels.
+    """
     try:
         logging.info("Preparing features for clustering.")
+
         if raw_df.empty:
             raise ValueError("Input DataFrame is empty.")
 
         df = raw_df.copy()
 
-        # Summarize product purchase per customer
+        # Step 1: Aggregate product quantities purchased by each customer
         try:
             purchase_summary = df.groupby(["Customer ID", "Product ID"])["Quantity"].sum().unstack(fill_value=0)
         except KeyError as e:
             logging.error(f"Missing expected columns during purchase summary: {e}")
             raise
 
-        # Extract static customer attributes
+        # Step 2: Extract demographic info per customer
         try:
             customer_info = df.groupby("Customer ID").agg({
                 "Customer Age": "first",
@@ -31,7 +65,7 @@ def prepare_features(raw_df):
             logging.error(f"Missing expected customer info columns: {e}")
             raise
 
-        # One-hot encode categorical features
+        # Step 3: One-hot encode gender and warehouse location
         try:
             encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
             encoded = encoder.fit_transform(customer_info[["Customer Gender", "Warehouse ID"]])
@@ -40,14 +74,17 @@ def prepare_features(raw_df):
             logging.error(f"Error during encoding: {e}")
             raise
 
-        # Combine all features
+        # Step 4: Combine all features
         try:
-            final_df_local = pd.concat([purchase_summary, customer_info[["Customer Age"]], encoded_df], axis=1)
+            final_df_local = pd.concat(
+                [purchase_summary, customer_info[["Customer Age"]], encoded_df],
+                axis=1
+            )
         except Exception as e:
             logging.error(f"Error concatenating features: {e}")
             raise
 
-        # Scale the features
+        # Step 5: Scale features
         try:
             scaler = MinMaxScaler()
             scaled = scaler.fit_transform(final_df_local)
@@ -55,16 +92,16 @@ def prepare_features(raw_df):
             logging.error(f"Error during scaling: {e}")
             raise
 
-        # Cluster assignment
+        # Step 6: Determine optimal clusters and apply KMeans
         try:
-            k = find_optimal_clusters(scaled)
-            kmeans = KMeans(n_clusters=k, random_state=42, n_init='auto')
+            optimal_k = find_optimal_clusters(scaled)
+            kmeans = KMeans(n_clusters=optimal_k, random_state=42, n_init='auto')
             final_df_local["Cluster"] = kmeans.fit_predict(scaled)
         except Exception as e:
             logging.error(f"Clustering failed: {e}")
             raise
 
-        # Map cluster back to raw data
+        # Step 7: Map clusters back to raw_df
         try:
             raw_df["Cluster"] = raw_df["Customer ID"].map(final_df_local["Cluster"])
         except Exception as e:
@@ -78,7 +115,23 @@ def prepare_features(raw_df):
         logging.error(f"prepare_features failed: {e}")
         raise
 
-def find_optimal_clusters(scaled_data, k_range=(2, 10)):
+
+def find_optimal_clusters(scaled_data: np.ndarray, k_range: tuple = (2, 10)) -> int:
+    """
+    Finds the optimal number of clusters using silhouette score.
+
+    Parameters:
+    ----------
+    scaled_data : np.ndarray
+        Normalized feature matrix.
+    k_range : tuple, optional
+        Range of cluster counts to test (default is (2, 10)).
+
+    Returns:
+    -------
+    best_k : int
+        The number of clusters with the highest silhouette score.
+    """
     try:
         if len(scaled_data) < 3:
             raise ValueError("Not enough data points for clustering.")
