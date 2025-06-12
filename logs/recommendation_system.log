@@ -444,3 +444,47 @@
 2025-06-10 15:18:47,789 - INFO - Job "sync_data (trigger: interval[0:10:00], next run at: 2025-06-10 15:28:47 IST)" executed successfully
 2025-06-10 15:18:51,291 - INFO - Scheduler has been shut down
 2025-06-10 15:18:51,292 - INFO - Scheduler shut down.
+2025-06-12 12:06:12 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 12:06:12 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 12:06:12 - INFO - Starting scheduler service...
+2025-06-12 12:06:12 - INFO - Starting data sync...
+2025-06-12 12:06:12 - INFO - Fetched 30 new rows.
+2025-06-12 12:06:13 - INFO - Data synced. Current total: 24945 rows.
+2025-06-12 12:06:13 - INFO - Preparing features for clustering.
+2025-06-12 12:06:15 - INFO - Model retrained.
+2025-06-12 12:06:15 - INFO - Added job "sync_data" to job store "default"
+2025-06-12 12:06:15 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-12 12:06:15 - INFO - Scheduler started
+2025-06-12 12:06:15 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:06:12 IST)" was missed by 0:00:02.480461
+2025-06-12 12:06:17 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:08:17 IST)" (scheduled at 2025-06-12 12:06:17.845007+05:30)
+2025-06-12 12:06:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:08:17 IST)" executed successfully
+2025-06-12 12:08:12 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:10:12 IST)" (scheduled at 2025-06-12 12:08:12.845007+05:30)
+2025-06-12 12:08:12 - INFO - Starting data sync...
+2025-06-12 12:08:12 - INFO - Fetched 30 new rows.
+2025-06-12 12:08:12 - INFO - Data synced. Current total: 24945 rows.
+2025-06-12 12:08:12 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:10:12 IST)" executed successfully
+2025-06-12 12:08:17 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:10:17 IST)" (scheduled at 2025-06-12 12:08:17.845007+05:30)
+2025-06-12 12:08:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:10:17 IST)" executed successfully
+2025-06-12 12:10:12 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:12:12 IST)" (scheduled at 2025-06-12 12:10:12.845007+05:30)
+2025-06-12 12:10:12 - INFO - Starting data sync...
+2025-06-12 12:10:12 - INFO - Fetched 30 new rows.
+2025-06-12 12:10:12 - INFO - Data synced. Current total: 24945 rows.
+2025-06-12 12:10:12 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:12:12 IST)" executed successfully
+2025-06-12 12:10:17 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:12:17 IST)" (scheduled at 2025-06-12 12:10:17.845007+05:30)
+2025-06-12 12:10:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:12:17 IST)" executed successfully
+2025-06-12 12:12:12 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:14:12 IST)" (scheduled at 2025-06-12 12:12:12.845007+05:30)
+2025-06-12 12:12:12 - INFO - Starting data sync...
+2025-06-12 12:12:12 - INFO - Fetched 30 new rows.
+2025-06-12 12:12:12 - INFO - Data synced. Current total: 24945 rows.
+2025-06-12 12:12:12 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:14:12 IST)" executed successfully
+2025-06-12 12:12:17 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:14:17 IST)" (scheduled at 2025-06-12 12:12:17.845007+05:30)
+2025-06-12 12:12:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:14:17 IST)" executed successfully
+2025-06-12 12:14:12 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:16:12 IST)" (scheduled at 2025-06-12 12:14:12.845007+05:30)
+2025-06-12 12:14:12 - INFO - Starting data sync...
+2025-06-12 12:14:12 - INFO - Fetched 30 new rows.
+2025-06-12 12:14:12 - INFO - Data synced. Current total: 24945 rows.
+2025-06-12 12:14:12 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 12:16:12 IST)" executed successfully
+2025-06-12 12:14:17 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:16:17 IST)" (scheduled at 2025-06-12 12:14:17.845007+05:30)
+2025-06-12 12:14:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:16:17 IST)" executed successfully
+2025-06-12 12:14:44 - INFO - Loaded pickled model.
+2025-06-12 12:14:44 - INFO - Loaded pickled model.

@@ -7,11 +7,13 @@ config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
 def get_path(section, key):
     return os.path.abspath(config.get(section, key))
 
-CSV_PATH = get_path("paths", "csv_path")
+# Paths
+CSV_PATH = get_path("paths", "csv_filename")
 MODEL_DIR = get_path("paths", "model_dir")
-MODEL_PATH = get_path("paths", "model_path")
-DF_PATH = get_path("paths", "df_path")
+MODEL_PATH = os.path.join(MODEL_DIR, config.get("paths", "model_filename"))
+DF_PATH = os.path.join(MODEL_DIR, config.get("paths", "df_filename"))
 
+# Database
 DB_CONFIG = {
     'host': config.get("database", "host"),
     'user': config.get("database", "user"),
@@ -19,11 +21,11 @@ DB_CONFIG = {
     'database': config.get("database", "database")
 }
 
+# Logging
 LOG_FILE = config.get("logging", "log_file")
 LOG_LEVEL = config.get("logging", "log_level")
 LOG_FORMAT = config.get("logging", "log_format")
 
-RETRAIN_INTERVAL = int(config.get("retrain", "interval"))
-ROW_GROWTH_THRESHOLD = int(config.get("retrain", "row_growth_threshold"))
-
-TOP_N_DEFAULT = int(config.get("model", "top_n"))
+# Retrain Parameters
+RETRAIN_INTERVAL = int(config.get("retraining", "interval_seconds"))
+ROW_GROWTH_THRESHOLD = int(config.get("retraining", "row_growth_threshold"))

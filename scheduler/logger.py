@@ -1,5 +1,5 @@
 import logging
-from app.config import LOG_FILE, LOG_LEVEL, LOG_FORMAT
+from config import LOG_FILE, LOG_LEVEL, LOG_FORMAT
 
 def setup_logging():
     logging.basicConfig(
@@ -8,4 +8,3 @@ def setup_logging():
         format=LOG_FORMAT,
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-
