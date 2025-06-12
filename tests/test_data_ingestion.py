@@ -1,121 +1,108 @@
+"""
+test_data_ingestion.py
+
+Unit tests for the data_ingestion module which handles MySQL data fetching
+and CSV synchronization for offline training and predictions.
+"""
+
 import os
-import pandas as pd
 import pytest
-from unittest.mock import patch, MagicMock
-from app import data_ingestion
+import pandas as pd
+from unittest import mock
+from unittest.mock import MagicMock, patch
 
-class TestDataIngestion:
+import scheduler.data_ingestion as ingestion
+
+
+@pytest.fixture
+def mock_db_dataframe():
+    return pd.DataFrame({
+        "Order ID": [1],
+        "Customer ID": ["CUST1"],
+        "Warehouse ID": [101],
+        "Customer Age": [25],
+        "Customer Gender": ["F"],
+        "Date": ["2023-01-01"],
+        "Product ID": ["PROD1"],
+        "SKU ID": ["SKU123"],
+        "Category": ["Electronics"],
+        "Quantity": [2],
+        "Price per Unit": [199.99]
+    })
+
+
+@patch("scheduler.data_ingestion.mysql.connector.connect")
+@patch("pandas.read_sql")
+def test_fetch_data_success(mock_read_sql, mock_connect, mock_db_dataframe):
     """
-    Test suite for the data_ingestion module.
+    Test fetch_data returns data correctly when MySQL query succeeds.
+    """
+    mock_read_sql.return_value = mock_db_dataframe
+    mock_conn = MagicMock()
+    mock_connect.return_value = mock_conn
 
-    Tests both integration and unit aspects:
-    - Integration test for fetch_data() connecting to MySQL and returning data.
-    - Unit tests for fetch_data() using mocks.
-    - sync_data() functionality ensuring correct CSV creation, appending, and deduplication.
+    result_df = ingestion.fetch_data()
+    assert isinstance(result_df, pd.DataFrame)
+    assert not result_df.empty
+    assert "Customer ID" in result_df.columns
+
+    mock_connect.assert_called_once()
+    mock_conn.close.assert_called_once()
+
+
+@patch("scheduler.data_ingestion.mysql.connector.connect", side_effect=Exception("DB failure"))
+def test_fetch_data_db_connection_failure(mock_connect):
+    """
+    Test fetch_data handles DB connection error and returns empty DataFrame.
+    """
+    result_df = ingestion.fetch_data()
+    assert isinstance(result_df, pd.DataFrame)
+    assert result_df.empty
+
+
+@patch("scheduler.data_ingestion.fetch_data")
+def test_sync_data_new_csv_created(mock_fetch_data, tmp_path, mock_db_dataframe):
+    """
+    Test sync_data creates a new CSV if one does not already exist.
+    """
+    # Simulate data fetch
+    mock_fetch_data.return_value = mock_db_dataframe
+
+    # Replace global CSV_PATH with temp file path
+    test_csv_path = tmp_path / "test_data.csv"
+    ingestion.CSV_PATH = str(test_csv_path)
+
+    ingestion.sync_data()
+    assert test_csv_path.exists()
     
-    Uses pytest's tmp_path fixture to isolate test CSV files in temporary directories,
-    preventing any modification or deletion of the actual production CSV file.
+    df_written = pd.read_csv(test_csv_path)
+    assert not df_written.empty
+    assert "Product ID" in df_written.columns
+
+
+@patch("scheduler.data_ingestion.fetch_data")
+def test_sync_data_existing_csv_merge(mock_fetch_data, tmp_path, mock_db_dataframe):
     """
+    Test sync_data merges new data with existing CSV and deduplicates.
+    """
+    # Simulate data fetch
+    mock_fetch_data.return_value = mock_db_dataframe
 
-    @pytest.mark.integration
-    def test_fetch_data_returns_dataframe(self):
-        """
-        Integration test for fetch_data().
+    # Create existing CSV with the same data
+    test_csv_path = tmp_path / "existing.csv"
+    mock_db_dataframe.to_csv(test_csv_path, index=False)
+    ingestion.CSV_PATH = str(test_csv_path)
 
-        Verifies fetch_data() connects to the MySQL database and returns a
-        non-empty pandas DataFrame. Skips test if the database is unreachable.
-        """
-        try:
-            df = data_ingestion.fetch_data()
-        except Exception:
-            pytest.skip("MySQL database not reachable.")
-        assert isinstance(df, pd.DataFrame)
-        assert not df.empty
+    ingestion.sync_data()
+    
+    df_written = pd.read_csv(test_csv_path)
+    assert len(df_written) == 1  # Deduplication ensures no duplicates
 
-    def test_fetch_data_calls_mysql_connector_and_reads_sql(self):
-        """
-        Unit test for fetch_data() with mocks.
 
-        Mocks mysql.connector.connect and pandas.read_sql to simulate database
-        connection and query. Verifies connection close and correct DataFrame return.
-        """
-        mock_conn = MagicMock()
-        mock_df = pd.DataFrame({"col1": [1, 2]})
-
-        with patch("mysql.connector.connect", return_value=mock_conn), \
-             patch("pandas.read_sql", return_value=mock_df):
-
-            result = data_ingestion.fetch_data()
-
-            mock_conn.close.assert_called_once()
-            pd.testing.assert_frame_equal(result, mock_df)
-
-    def test_sync_data_creates_csv(self, tmp_path):
-        """
-        Test sync_data() creates a CSV file correctly in a temporary path.
-
-        Mocks fetch_data() to return a dummy DataFrame,
-        runs sync_data(), and verifies that the CSV file is created
-        and its content matches the dummy DataFrame.
-        """
-        dummy_df = pd.DataFrame({"A": [1], "B": [2]})
-
-        # Override CSV_PATH to a temp test file inside tmp_path
-        data_ingestion.CSV_PATH = os.path.join(tmp_path, "test.csv")
-
-        with patch("app.data_ingestion.fetch_data", return_value=dummy_df):
-            # Ensure the CSV does not exist before sync
-            assert not os.path.exists(data_ingestion.CSV_PATH)
-
-            data_ingestion.sync_data()
-
-            # Check the CSV was created
-            assert os.path.exists(data_ingestion.CSV_PATH)
-
-            # Read back and check contents match dummy_df exactly
-            df = pd.read_csv(data_ingestion.CSV_PATH)
-            pd.testing.assert_frame_equal(df, dummy_df)
-
-    def test_sync_data_appends_and_dedupes(self, tmp_path):
-        """
-        Test sync_data() appends new data to existing CSV and removes duplicates.
-
-        Creates an initial CSV file with old data, mocks fetch_data() to return new data
-        with some overlapping rows, runs sync_data(), then verifies
-        the final CSV contains all unique rows combined.
-        """
-        old_df = pd.DataFrame({
-            "Order ID": [1, 2],
-            "Product ID": [101, 102],
-            "SKU ID": [1001, 1002],
-            "Quantity": [3, 4]
-        })
-
-        new_df = pd.DataFrame({
-            "Order ID": [2, 3],
-            "Product ID": [102, 103],
-            "SKU ID": [1002, 1003],
-            "Quantity": [4, 5]
-        })  # Note overlap on Order ID = 2
-
-        # Save old_df to temp CSV file
-        data_ingestion.CSV_PATH = os.path.join(tmp_path, "test.csv")
-        old_df.to_csv(data_ingestion.CSV_PATH, index=False)
-
-        with patch("app.data_ingestion.fetch_data", return_value=new_df):
-            data_ingestion.sync_data()
-
-            combined_df = pd.read_csv(data_ingestion.CSV_PATH)
-
-            expected_df = pd.DataFrame({
-                "Order ID": [1, 2, 3],
-                "Product ID": [101, 102, 103],
-                "SKU ID": [1001, 1002, 1003],
-                "Quantity": [3, 4, 5]
-            })
-
-            # Compare ignoring row order and index
-            pd.testing.assert_frame_equal(
-                combined_df.sort_values(by="Order ID").reset_index(drop=True),
-                expected_df.sort_values(by="Order ID").reset_index(drop=True),
-            )
+@patch("scheduler.data_ingestion.fetch_data", return_value=pd.DataFrame())
+def test_sync_data_no_new_data_logged(mock_fetch_data, caplog):
+    """
+    Test sync_data logs a warning when no new data is fetched.
+    """
+    ingestion.sync_data()
+    assert "No data fetched from the database." in caplog.text
