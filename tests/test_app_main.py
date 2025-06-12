@@ -13,7 +13,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 
 from fastapi import FastAPI
-from app.main import lifespan, monitor_model_updates, MODEL_REFRESH_INTERVAL
+from app.main import lifespan,monitor_model_updates
 
 
 @pytest.mark.asyncio
