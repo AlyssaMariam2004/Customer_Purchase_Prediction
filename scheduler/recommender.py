@@ -72,7 +72,7 @@ def prepare_features(raw_df):
             raise
 
         logging.info("Feature preparation and clustering completed.")
-        return raw_df, final_df_local
+        return final_df_local
 
     except Exception as e:
         logging.error(f"prepare_features failed: {e}")

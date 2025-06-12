@@ -507,3 +507,108 @@
 2025-06-12 13:01:29 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 13:03:29 IST)" (scheduled at 2025-06-12 13:01:29.877549+05:30)
 2025-06-12 13:01:29 - INFO - No retraining needed at this time.
 2025-06-12 13:01:29 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 13:03:29 IST)" executed successfully
+2025-06-12 13:05:42 - INFO - Pickled model and data loaded successfully.
+2025-06-12 13:05:42 - INFO - Detected model change. Reloading...
+2025-06-12 13:05:42 - INFO - Pickled model and data loaded successfully.
+2025-06-12 13:11:10 - INFO - Loaded pickled model and dataframe.
+2025-06-12 13:11:10 - INFO - Detected model change. Reloading...
+2025-06-12 13:11:10 - INFO - Loaded pickled model and dataframe.
+2025-06-12 13:11:27 - ERROR - Error during recommendation generation.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 34, in recommend_products
+    if customer_id not in final_df.index:
+TypeError: argument of type 'builtin_function_or_method' is not iterable
+2025-06-12 13:11:39 - ERROR - Error during recommendation generation.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 34, in recommend_products
+    if customer_id not in final_df.index:
+TypeError: argument of type 'builtin_function_or_method' is not iterable
+2025-06-12 16:20:41 - INFO - Loaded pickled model and dataframe.
+2025-06-12 16:20:41 - INFO - Detected model change. Reloading...
+2025-06-12 16:20:41 - INFO - Loaded pickled model and dataframe.
+2025-06-12 16:20:56 - ERROR - Error during recommendation generation.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 34, in recommend_products
+    if customer_id not in final_df.index:
+TypeError: argument of type 'builtin_function_or_method' is not iterable
+2025-06-12 16:26:07 - INFO - Loaded pickled model and dataframe.
+2025-06-12 16:26:07 - INFO - Detected model change. Reloading...
+2025-06-12 16:26:07 - INFO - Loaded pickled model and dataframe.
+2025-06-12 16:26:26 - ERROR - Error during recommendation generation.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 35, in recommend_products
+    if customer_id not in final_df.index:
+TypeError: argument of type 'builtin_function_or_method' is not iterable
+2025-06-12 16:29:35 - ERROR - Loaded object from MODEL_PATH is not a DataFrame.
+2025-06-12 16:29:35 - ERROR - Failed to load pickle files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 27, in load_pickled_data
+    raise ValueError("Invalid format: final_df must be a pandas DataFrame.")
+ValueError: Invalid format: final_df must be a pandas DataFrame.
+2025-06-12 16:29:35 - ERROR - Error during app startup: Error loading pickled data: Invalid format: final_df must be a pandas DataFrame.
+2025-06-12 16:35:32 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 16:35:32 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 16:35:32 - INFO - Starting scheduler...
+2025-06-12 16:35:32 - INFO - Starting data sync...
+2025-06-12 16:35:32 - INFO - Merged dataset now has 24945 rows.
+2025-06-12 16:35:32 - INFO - Data sync complete and written to CSV.
+2025-06-12 16:35:32 - INFO - Triggering retraining based on threshold.
+2025-06-12 16:35:32 - INFO - Preparing features for clustering.
+2025-06-12 16:35:35 - INFO - Feature preparation and clustering completed.
+2025-06-12 16:35:35 - ERROR - Error during retrain_model: prepare_features must return a pandas DataFrame.
+2025-06-12 16:35:35 - INFO - Added job "sync_data" to job store "default"
+2025-06-12 16:35:35 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-12 16:35:35 - INFO - Scheduler started
+2025-06-12 16:35:35 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:35:32 IST)" was missed by 0:00:03.200879
+2025-06-12 16:35:37 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:37:37 IST)" (scheduled at 2025-06-12 16:35:37.514751+05:30)
+2025-06-12 16:35:37 - INFO - Triggering retraining based on threshold.
+2025-06-12 16:35:37 - INFO - Preparing features for clustering.
+2025-06-12 16:35:38 - INFO - Feature preparation and clustering completed.
+2025-06-12 16:35:38 - ERROR - Error during retrain_model: prepare_features must return a pandas DataFrame.
+2025-06-12 16:35:38 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:37:37 IST)" executed successfully
+2025-06-12 16:37:32 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:39:32 IST)" (scheduled at 2025-06-12 16:37:32.514751+05:30)
+2025-06-12 16:37:32 - INFO - Starting data sync...
+2025-06-12 16:37:32 - INFO - Merged dataset now has 24945 rows.
+2025-06-12 16:37:32 - INFO - Data sync complete and written to CSV.
+2025-06-12 16:37:32 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:39:32 IST)" executed successfully
+2025-06-12 16:37:37 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:39:37 IST)" (scheduled at 2025-06-12 16:37:37.514751+05:30)
+2025-06-12 16:37:37 - INFO - Triggering retraining based on threshold.
+2025-06-12 16:37:37 - INFO - Preparing features for clustering.
+2025-06-12 16:37:38 - INFO - Feature preparation and clustering completed.
+2025-06-12 16:37:38 - ERROR - Error during retrain_model: prepare_features must return a pandas DataFrame.
+2025-06-12 16:37:38 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:39:37 IST)" executed successfully
+2025-06-12 16:39:32 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:41:32 IST)" (scheduled at 2025-06-12 16:39:32.514751+05:30)
+2025-06-12 16:39:32 - INFO - Starting data sync...
+2025-06-12 16:39:32 - INFO - Merged dataset now has 24945 rows.
+2025-06-12 16:39:32 - INFO - Data sync complete and written to CSV.
+2025-06-12 16:39:32 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:41:32 IST)" executed successfully
+2025-06-12 16:39:37 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:41:37 IST)" (scheduled at 2025-06-12 16:39:37.514751+05:30)
+2025-06-12 16:39:37 - INFO - Triggering retraining based on threshold.
+2025-06-12 16:39:37 - INFO - Preparing features for clustering.
+2025-06-12 16:39:38 - INFO - Feature preparation and clustering completed.
+2025-06-12 16:39:38 - ERROR - Error during retrain_model: prepare_features must return a pandas DataFrame.
+2025-06-12 16:39:38 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:41:37 IST)" executed successfully
+2025-06-12 16:44:22 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 16:44:22 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 16:44:22 - INFO - Starting scheduler...
+2025-06-12 16:44:22 - INFO - Starting data sync...
+2025-06-12 16:44:23 - INFO - Merged dataset now has 24945 rows.
+2025-06-12 16:44:23 - INFO - Data sync complete and written to CSV.
+2025-06-12 16:44:23 - INFO - Triggering retraining based on threshold.
+2025-06-12 16:44:23 - INFO - Preparing features for clustering.
+2025-06-12 16:44:26 - INFO - Feature preparation and clustering completed.
+2025-06-12 16:44:26 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-12 16:44:26 - INFO - Removed old model backup: final_df_20250612_120615.pkl
+2025-06-12 16:44:26 - INFO - Removed old model backup: df_20250612_164426.pkl
+2025-06-12 16:44:26 - INFO - Model retrained successfully.
+2025-06-12 16:44:26 - INFO - Added job "sync_data" to job store "default"
+2025-06-12 16:44:26 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-12 16:44:26 - INFO - Scheduler started
+2025-06-12 16:44:26 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 16:44:22 IST)" was missed by 0:00:03.229723
+2025-06-12 16:44:27 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:46:27 IST)" (scheduled at 2025-06-12 16:44:27.929194+05:30)
+2025-06-12 16:44:27 - INFO - No retraining needed at this time.
+2025-06-12 16:44:27 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 16:46:27 IST)" executed successfully
+2025-06-12 16:44:50 - INFO - Loaded pickled model and dataframe successfully.
+2025-06-12 16:44:50 - INFO - Detected model change. Reloading...
+2025-06-12 16:44:50 - INFO - Loaded pickled model and dataframe successfully.
+2025-06-12 16:45:15 - WARNING - Invalid CustomerID requested: CUST001234567

@@ -6,6 +6,7 @@ from app.config import MODEL_PATH
 
 import asyncio
 import os
+import logging
 from contextlib import asynccontextmanager
 
 setup_logging()
@@ -17,21 +18,26 @@ async def monitor_model_updates():
     global last_model_update_time
     while True:
         try:
-            model_mtime = os.path.getmtime(MODEL_PATH)
-            if model_mtime > last_model_update_time:
-                print("[Monitor] New model detected. Reloading...")
-                load_pickled_data()
-                last_model_update_time = model_mtime
+            if os.path.exists(MODEL_PATH):
+                model_mtime = os.path.getmtime(MODEL_PATH)
+                if model_mtime > last_model_update_time:
+                    logging.info("Detected model change. Reloading...")
+                    load_pickled_data()
+                    last_model_update_time = model_mtime
+            else:
+                logging.warning("Model path not found for monitoring.")
         except Exception as e:
-            print(f"[Monitor Error] {e}")
+            logging.error(f"[Model Monitor] Error: {e}")
         await asyncio.sleep(MODEL_REFRESH_INTERVAL)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    load_pickled_data()
-    asyncio.create_task(monitor_model_updates())
-    yield
+    try:
+        load_pickled_data()
+        asyncio.create_task(monitor_model_updates())
+        yield
+    except Exception as e:
+        logging.error(f"Error during app startup: {e}")
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router)
-
