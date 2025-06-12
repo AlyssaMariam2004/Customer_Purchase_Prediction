@@ -8,3 +8,5 @@ sqlalchemy
 mysql-connector-python
 pytest
 apscheduler
+httpx
+pytest-asyncio
