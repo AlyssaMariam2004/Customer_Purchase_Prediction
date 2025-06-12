@@ -488,3 +488,22 @@
 2025-06-12 12:14:17 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 12:16:17 IST)" executed successfully
 2025-06-12 12:14:44 - INFO - Loaded pickled model.
 2025-06-12 12:14:44 - INFO - Loaded pickled model.
+2025-06-12 13:01:24 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 13:01:24 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-12 13:01:24 - INFO - Starting scheduler...
+2025-06-12 13:01:24 - INFO - Starting data sync...
+2025-06-12 13:01:24 - INFO - Merged dataset now has 24945 rows.
+2025-06-12 13:01:25 - INFO - Data sync complete and written to CSV.
+2025-06-12 13:01:25 - INFO - Preparing features for clustering.
+2025-06-12 13:01:27 - INFO - Feature preparation and clustering completed.
+2025-06-12 13:01:27 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-12 13:01:27 - INFO - Removed old model backup: df_20250612_130127.pkl
+2025-06-12 13:01:27 - INFO - Removed old model backup: df_20250612_120615.pkl
+2025-06-12 13:01:27 - INFO - Model retrained successfully.
+2025-06-12 13:01:27 - INFO - Added job "sync_data" to job store "default"
+2025-06-12 13:01:27 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-12 13:01:27 - INFO - Scheduler started
+2025-06-12 13:01:27 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-12 13:01:24 IST)" was missed by 0:00:02.599347
+2025-06-12 13:01:29 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 13:03:29 IST)" (scheduled at 2025-06-12 13:01:29.877549+05:30)
+2025-06-12 13:01:29 - INFO - No retraining needed at this time.
+2025-06-12 13:01:29 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 13:03:29 IST)" executed successfully
