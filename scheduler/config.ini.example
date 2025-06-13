@@ -5,7 +5,7 @@ password = your_password
 database = your_database
 
 [paths]
-csv_filename = NewData1.csv
+csv_filename = data/NewData1.csv
 model_dir = models
 model_filename = final_df.pkl
 df_filename = df.pkl

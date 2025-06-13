@@ -30,8 +30,12 @@ def get_absolute_path(section: str, key: str) -> str:
 # File and model paths
 CSV_FILE_PATH = get_absolute_path("paths", "csv_filename")
 MODEL_DIRECTORY = get_absolute_path("paths", "model_dir")
-MODEL_FILE_PATH = get_absolute_path("paths", "model_filename")
-DATAFRAME_PATH = get_absolute_path("paths", "df_filename")
+
+MODEL_FILE_PATH = os.path.join(MODEL_DIRECTORY, config.get("paths", "model_filename"))
+MODEL_FILE_PATH = os.path.abspath(MODEL_FILE_PATH)
+
+DATAFRAME_PATH = os.path.join(MODEL_DIRECTORY, config.get("paths", "df_filename"))
+DATAFRAME_PATH = os.path.abspath(DATAFRAME_PATH)
 
 # Database configuration
 DB_CONFIG = {

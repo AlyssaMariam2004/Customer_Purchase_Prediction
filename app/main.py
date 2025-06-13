@@ -47,7 +47,6 @@ async def monitor_model_updates() -> None:
         # Wait before checking again
         await asyncio.sleep(MODEL_REFRESH_INTERVAL)
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
@@ -57,16 +56,20 @@ async def lifespan(app: FastAPI):
     - Starts the background task to monitor model changes
     """
     try:
-        load_pickled_data()  # Initial model load
-        asyncio.create_task(monitor_model_updates())  # Start model monitoring task
+        load_pickled_data()
+        asyncio.create_task(monitor_model_updates())
     except Exception as e:
         logging.error(f"[Startup] Failed during application lifespan: {e}")
-    finally:
-        yield 
-        
+
+    yield  # Required for FastAPI lifespan to work
+
+
+
 # Initialize FastAPI app with custom lifespan handler
 app = FastAPI(lifespan=lifespan)
 
 # Register API routes
 app.include_router(router)
+
+
 

@@ -639,3 +639,205 @@ ValueError: Invalid format: final_df must be a pandas DataFrame.
 2025-06-12 19:21:28 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 19:23:28 IST)" (scheduled at 2025-06-12 19:21:28.691676+05:30)
 2025-06-12 19:21:28 - INFO - No retraining needed at this time.
 2025-06-12 19:21:28 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-12 19:23:28 IST)" executed successfully
+2025-06-13 13:36:10 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 13:36:10 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 13:36:10 - INFO - Scheduler starting...
+2025-06-13 13:36:10 - INFO - Starting data sync from database to CSV...
+2025-06-13 13:36:11 - INFO - No existing CSV found. Creating a new dataset from fetched data.
+2025-06-13 13:36:11 - INFO - Data successfully written to CSV.
+2025-06-13 13:36:11 - INFO - Triggering retraining based on threshold.
+2025-06-13 13:36:11 - INFO - Preparing features for clustering.
+2025-06-13 13:36:13 - INFO - Feature preparation and clustering completed.
+2025-06-13 13:36:13 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 13:36:13 - INFO - Removed old model backup: final_df_20250612_164426.pkl
+2025-06-13 13:36:13 - INFO - Removed old model backup: df_20250613_133613.pkl
+2025-06-13 13:36:13 - INFO - Model retrained successfully.
+2025-06-13 13:36:13 - INFO - Added job "sync_data" to job store "default"
+2025-06-13 13:36:13 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-13 13:36:13 - INFO - Scheduler started
+2025-06-13 13:36:13 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 13:36:10 IST)" was missed by 0:00:02.501427
+2025-06-13 13:36:15 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 13:38:15 IST)" (scheduled at 2025-06-13 13:36:15.849961+05:30)
+2025-06-13 13:36:15 - INFO - No retraining needed at this time.
+2025-06-13 13:36:15 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 13:38:15 IST)" executed successfully
+2025-06-13 13:37:17 - WARNING - Pickle files not found.
+2025-06-13 13:37:17 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 13:37:17 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 13:37:52 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 13:38:10 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 13:40:10 IST)" (scheduled at 2025-06-13 13:38:10.849961+05:30)
+2025-06-13 13:38:10 - INFO - Starting data sync from database to CSV...
+2025-06-13 13:38:10 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 13:38:10 - INFO - Data successfully written to CSV.
+2025-06-13 13:38:10 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 13:40:10 IST)" executed successfully
+2025-06-13 13:38:15 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 13:40:15 IST)" (scheduled at 2025-06-13 13:38:15.849961+05:30)
+2025-06-13 13:38:15 - INFO - Triggering retraining based on threshold.
+2025-06-13 13:38:15 - INFO - Preparing features for clustering.
+2025-06-13 13:38:15 - INFO - Feature preparation and clustering completed.
+2025-06-13 13:38:15 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 13:38:16 - INFO - Removed old model backup: final_df_20250612_192127.pkl
+2025-06-13 13:38:16 - INFO - Removed old model backup: df_20250613_133815.pkl
+2025-06-13 13:38:16 - INFO - Model retrained successfully.
+2025-06-13 13:38:16 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 13:40:15 IST)" executed successfully
+2025-06-13 13:38:17 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 13:39:10 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 13:55:13 - WARNING - Pickle files not found.
+2025-06-13 13:55:13 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 13:55:13 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 13:56:59 - WARNING - Pickle files not found.
+2025-06-13 13:56:59 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 13:56:59 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 13:57:50 - WARNING - Pickle files not found.
+2025-06-13 13:57:50 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 13:57:50 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 14:02:09 - WARNING - Pickle files not found.
+2025-06-13 14:02:09 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 14:02:09 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 14:02:19 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 14:02:32 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 14:08:19 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 14:08:19 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 14:08:19 - INFO - Scheduler starting...
+2025-06-13 14:08:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:08:19 - INFO - No existing CSV found. Creating a new dataset from fetched data.
+2025-06-13 14:08:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:08:19 - INFO - Triggering retraining based on threshold.
+2025-06-13 14:08:19 - INFO - Preparing features for clustering.
+2025-06-13 14:08:21 - INFO - Feature preparation and clustering completed.
+2025-06-13 14:08:21 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 14:08:21 - INFO - Removed old model backup: final_df_20250613_133613.pkl
+2025-06-13 14:08:21 - INFO - Removed old model backup: df_20250613_140821.pkl
+2025-06-13 14:08:21 - INFO - Model retrained successfully.
+2025-06-13 14:08:21 - INFO - Added job "sync_data" to job store "default"
+2025-06-13 14:08:21 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-13 14:08:21 - INFO - Scheduler started
+2025-06-13 14:08:21 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:08:19 IST)" was missed by 0:00:02.277789
+2025-06-13 14:08:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:10:24 IST)" (scheduled at 2025-06-13 14:08:24.583055+05:30)
+2025-06-13 14:08:24 - INFO - No retraining needed at this time.
+2025-06-13 14:08:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:10:24 IST)" executed successfully
+2025-06-13 14:10:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:12:19 IST)" (scheduled at 2025-06-13 14:10:19.583055+05:30)
+2025-06-13 14:10:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:10:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:10:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:10:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:12:19 IST)" executed successfully
+2025-06-13 14:10:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:12:24 IST)" (scheduled at 2025-06-13 14:10:24.583055+05:30)
+2025-06-13 14:10:24 - INFO - Triggering retraining based on threshold.
+2025-06-13 14:10:24 - INFO - Preparing features for clustering.
+2025-06-13 14:10:24 - INFO - Feature preparation and clustering completed.
+2025-06-13 14:10:24 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 14:10:24 - INFO - Removed old model backup: final_df_20250613_133815.pkl
+2025-06-13 14:10:24 - INFO - Removed old model backup: df_20250613_141024.pkl
+2025-06-13 14:10:24 - INFO - Model retrained successfully.
+2025-06-13 14:10:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:12:24 IST)" executed successfully
+2025-06-13 14:10:43 - WARNING - Pickle files not found.
+2025-06-13 14:10:43 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 14:10:43 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 14:11:02 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 14:12:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:14:19 IST)" (scheduled at 2025-06-13 14:12:19.583055+05:30)
+2025-06-13 14:12:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:12:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:12:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:12:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:14:19 IST)" executed successfully
+2025-06-13 14:12:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:14:24 IST)" (scheduled at 2025-06-13 14:12:24.583055+05:30)
+2025-06-13 14:12:24 - INFO - No retraining needed at this time.
+2025-06-13 14:12:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:14:24 IST)" executed successfully
+2025-06-13 14:14:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:16:19 IST)" (scheduled at 2025-06-13 14:14:19.583055+05:30)
+2025-06-13 14:14:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:14:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:14:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:14:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:16:19 IST)" executed successfully
+2025-06-13 14:14:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:16:24 IST)" (scheduled at 2025-06-13 14:14:24.583055+05:30)
+2025-06-13 14:14:24 - INFO - No retraining needed at this time.
+2025-06-13 14:14:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:16:24 IST)" executed successfully
+2025-06-13 14:16:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:18:19 IST)" (scheduled at 2025-06-13 14:16:19.583055+05:30)
+2025-06-13 14:16:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:16:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:16:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:16:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:18:19 IST)" executed successfully
+2025-06-13 14:16:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:18:24 IST)" (scheduled at 2025-06-13 14:16:24.583055+05:30)
+2025-06-13 14:16:24 - INFO - No retraining needed at this time.
+2025-06-13 14:16:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:18:24 IST)" executed successfully
+2025-06-13 14:18:57 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:20:19 IST)" was missed by 0:00:38.078374
+2025-06-13 14:18:57 - WARNING - Run time of job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:18:24 IST)" was missed by 0:00:33.079503
+2025-06-13 14:20:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:22:19 IST)" (scheduled at 2025-06-13 14:20:19.583055+05:30)
+2025-06-13 14:20:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:20:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:20:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:20:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:22:19 IST)" executed successfully
+2025-06-13 14:20:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:22:24 IST)" (scheduled at 2025-06-13 14:20:24.583055+05:30)
+2025-06-13 14:20:24 - INFO - No retraining needed at this time.
+2025-06-13 14:20:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:22:24 IST)" executed successfully
+2025-06-13 14:23:08 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:24:19 IST)" was missed by 0:00:49.088754
+2025-06-13 14:23:08 - WARNING - Run time of job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:24:24 IST)" was missed by 0:00:44.088754
+2025-06-13 14:24:19 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:26:19 IST)" (scheduled at 2025-06-13 14:24:19.583055+05:30)
+2025-06-13 14:24:19 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:24:19 - INFO - Merged dataset now contains 60 rows.
+2025-06-13 14:24:19 - INFO - Data successfully written to CSV.
+2025-06-13 14:24:19 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:26:19 IST)" executed successfully
+2025-06-13 14:24:24 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:26:24 IST)" (scheduled at 2025-06-13 14:24:24.583055+05:30)
+2025-06-13 14:24:24 - INFO - Triggering retraining based on threshold.
+2025-06-13 14:24:24 - INFO - Preparing features for clustering.
+2025-06-13 14:24:24 - INFO - Feature preparation and clustering completed.
+2025-06-13 14:24:24 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 14:24:24 - INFO - Removed old model backup: final_df_20250613_140821.pkl
+2025-06-13 14:24:24 - INFO - Removed old model backup: df_20250613_142424.pkl
+2025-06-13 14:24:24 - INFO - Model retrained successfully.
+2025-06-13 14:24:24 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:26:24 IST)" executed successfully
+2025-06-13 14:33:00 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 14:33:00 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-13 14:33:00 - INFO - Scheduler starting...
+2025-06-13 14:33:00 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:33:00 - INFO - Merged dataset now contains 24945 rows.
+2025-06-13 14:33:01 - INFO - Data successfully written to CSV.
+2025-06-13 14:33:01 - INFO - Triggering retraining based on threshold.
+2025-06-13 14:33:01 - INFO - Preparing features for clustering.
+2025-06-13 14:33:03 - INFO - Feature preparation and clustering completed.
+2025-06-13 14:33:03 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-13 14:33:03 - INFO - Removed old model backup: final_df_20250613_141024.pkl
+2025-06-13 14:33:04 - INFO - Removed old model backup: df_20250613_143303.pkl
+2025-06-13 14:33:04 - INFO - Model retrained successfully.
+2025-06-13 14:33:04 - INFO - Added job "sync_data" to job store "default"
+2025-06-13 14:33:04 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-13 14:33:04 - INFO - Scheduler started
+2025-06-13 14:33:04 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:33:00 IST)" was missed by 0:00:03.183040
+2025-06-13 14:33:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:35:05 IST)" (scheduled at 2025-06-13 14:33:05.822539+05:30)
+2025-06-13 14:33:05 - INFO - No retraining needed at this time.
+2025-06-13 14:33:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:35:05 IST)" executed successfully
+2025-06-13 14:33:45 - WARNING - Pickle files not found.
+2025-06-13 14:33:45 - ERROR - Failed to load pickled files.
+Traceback (most recent call last):
+  File "C:\Customer_Purchase_Prediction\app\recommender.py", line 48, in load_pickled_data
+    raise FileNotFoundError("Pickled model or data file not found.")
+FileNotFoundError: Pickled model or data file not found.
+2025-06-13 14:33:45 - ERROR - [Startup] Failed during application lifespan: Error loading pickled data: Pickled model or data file not found.
+2025-06-13 14:34:04 - ERROR - Model data not loaded before recommendation request.
+2025-06-13 14:35:00 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:00 IST)" (scheduled at 2025-06-13 14:35:00.822539+05:30)
+2025-06-13 14:35:00 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:35:00 - INFO - Merged dataset now contains 24945 rows.
+2025-06-13 14:35:01 - INFO - Data successfully written to CSV.
+2025-06-13 14:35:01 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:00 IST)" executed successfully
+2025-06-13 14:35:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:05 IST)" (scheduled at 2025-06-13 14:35:05.822539+05:30)
+2025-06-13 14:35:05 - INFO - No retraining needed at this time.
+2025-06-13 14:35:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:05 IST)" executed successfully
