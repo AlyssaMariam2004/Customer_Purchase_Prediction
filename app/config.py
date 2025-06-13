@@ -28,22 +28,18 @@ def get_absolute_path(section: str, key: str) -> str:
 
 
 # File and model paths
-CSV_FILE_PATH = get_absolute_path("paths", "csv_path")
+CSV_FILE_PATH = get_absolute_path("paths", "csv_filename")
 MODEL_DIRECTORY = get_absolute_path("paths", "model_dir")
-MODEL_FILE_PATH = get_absolute_path("paths", "model_path")
-DATAFRAME_PATH = get_absolute_path("paths", "df_path")
+MODEL_FILE_PATH = get_absolute_path("paths", "model_filename")
+DATAFRAME_PATH = get_absolute_path("paths", "df_filename")
 
-from dotenv import load_dotenv
-
-load_dotenv()  
-
-DATABASE_CONFIG = {
-    'host': os.getenv("DB_HOST"),
-    'user': os.getenv("DB_USER"),
-    'password': os.getenv("DB_PASSWORD"),
-    'database': os.getenv("DB_NAME")
+# Database configuration
+DB_CONFIG = {
+    'host': config.get("database", "host"),
+    'user': config.get("database", "user"),
+    'password': config.get("database", "password"),
+    'database': config.get("database", "database")
 }
-
 
 # Logging configuration
 LOGGING_FILE_PATH = config.get("logging", "log_file")
@@ -51,8 +47,8 @@ LOGGING_LEVEL = config.get("logging", "log_level")
 LOGGING_FORMAT = config.get("logging", "log_format")
 
 # Model retraining configuration
-MODEL_RETRAIN_INTERVAL = int(config.get("retrain", "interval"))  # in seconds or minutes
-ROW_GROWTH_THRESHOLD = int(config.get("retrain", "row_growth_threshold"))  # trigger retraining if rows exceed this threshold
+MODEL_RETRAIN_INTERVAL = int(config.get("retraining", "interval_seconds"))  # in seconds or minutes
+ROW_GROWTH_THRESHOLD = int(config.get("retraining", "row_growth_threshold"))  # trigger retraining if rows exceed this threshold
 
 # Default recommendation output size
 DEFAULT_TOP_N = int(config.get("model", "top_n"))

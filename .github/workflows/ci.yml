@@ -28,6 +28,31 @@ jobs:
       run: |
         echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
+    - name: Generate safe config.ini for CI
+      run: |
+        mkdir -p app scheduler
+        echo "[paths]" > app/config.ini
+        echo "csv_path = data/NewData1.csv" >> app/config.ini
+        echo "model_path = models/final_df.pkl" >> app/config.ini
+        echo "model_dir = models" >> app/config.ini
+        echo "df_path = models/final_df.pkl" >> app/config.ini
+        echo "[logging]" >> app/config.ini
+        echo "log_file = logs/recommendation_system.log" >> app/config.ini
+        echo "log_level = INFO" >> app/config.ini
+        echo "log_format = %(asctime)s - %(levelname)s - %(message)s" >> app/config.ini
+        echo "[model]" >> app/config.ini
+        echo "top_n = 5" >> app/config.ini
+        echo "[retrain]" >> app/config.ini
+        echo "interval = 60" >> app/config.ini
+        echo "row_growth_threshold = 100" >> app/config.ini
+        echo "[database]" >> app/config.ini
+        echo "host = dummy" >> app/config.ini
+        echo "user = dummy" >> app/config.ini
+        echo "password = dummy" >> app/config.ini
+        echo "database = dummy" >> app/config.ini
+
+        cp app/config.ini scheduler/config.ini
+
     - name: Run Pytest
       run: |
         pytest tests/ --disable-warnings --maxfail=3

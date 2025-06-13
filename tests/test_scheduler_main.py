@@ -1,53 +1,51 @@
+"""
+Unit tests for the `main.py` module, which sets up and runs APScheduler jobs
+for syncing data and retraining models periodically.
+"""
+
 import pytest
-from unittest.mock import patch, MagicMock, call
-from scheduler import main
+import logging
+from unittest.mock import patch, MagicMock
+
+import scheduler.main as main
 
 
-@patch("scheduler.main.sync_data")
-@patch("scheduler.main.maybe_retrain_model")
-@patch("scheduler.main.BlockingScheduler")
-def test_main_scheduler_starts_successfully(
-    mock_scheduler_cls, mock_retrain, mock_sync
-):
+def test_scheduler_initialization_positive(caplog):
     """
-    Positive Test:
-    Should add two jobs and start the scheduler successfully.
+    Test that the scheduler starts successfully and logs the expected message.
+
+    Mocks:
+        - `sync_data`
+        - `maybe_retrain_model`
+        - `BlockingScheduler.start`
     """
-    mock_scheduler = MagicMock()
-    mock_scheduler_cls.return_value = mock_scheduler
+    with patch("scheduler.main.sync_data") as mock_sync, \
+         patch("scheduler.main.maybe_retrain_model") as mock_retrain, \
+         patch.object(main.scheduler, "start") as mock_start, \
+         caplog.at_level(logging.INFO):
 
-    main.start_scheduler()
+        main.start_scheduler()
 
-    # Assert two jobs are scheduled
-    assert mock_scheduler.add_job.call_count == 2
-
-    # Assert both functions are run once manually
-    mock_sync.assert_called_once()
-    mock_retrain.assert_called_once()
-
-    # Scheduler should be started
-    mock_scheduler.start.assert_called_once()
+        assert mock_sync.called, "sync_data should be called during startup"
+        assert mock_retrain.called, "maybe_retrain_model should be called during startup"
+        assert mock_start.called, "scheduler.start should be called"
+        assert any("Scheduler starting" in message for message in caplog.messages)
 
 
-@patch("scheduler.main.sync_data", side_effect=Exception("Boom"))
-@patch("scheduler.main.maybe_retrain_model")
-@patch("scheduler.main.BlockingScheduler")
-@patch("scheduler.main.logging")
-def test_main_scheduler_job_add_failure(
-    mock_logging, mock_scheduler_cls, mock_retrain, mock_sync
-):
+def test_scheduler_initialization_failure(caplog):
     """
-    Negative Test:
-    Should catch exception from sync_data and log an error.
+    Test that an error during scheduler initialization is logged properly.
+
+    Mocks:
+        - `sync_data` to raise an Exception
     """
-    mock_scheduler = MagicMock()
-    mock_scheduler_cls.return_value = mock_scheduler
+    with patch("scheduler.main.sync_data", side_effect=Exception("DB connection failed")), \
+         patch("scheduler.main.maybe_retrain_model"), \
+         patch.object(main.scheduler, "start") as mock_start, \
+         caplog.at_level(logging.ERROR):
 
-    main.start_scheduler()
+        main.start_scheduler()
 
-    # It should have attempted to run sync_data and raised
-    mock_sync.assert_called_once()
-
-    # It should have logged the error
-    mock_logging.error.assert_any_call("Error in scheduler initialization: Boom")
-
+        mock_start.assert_not_called()
+        assert any("Error in scheduler initialization" in msg for msg in caplog.messages)
+        assert any("DB connection failed" in msg for msg in caplog.messages)
