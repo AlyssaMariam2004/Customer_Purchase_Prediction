@@ -1,0 +1,23 @@
+[paths]
+csv_path = data/NewData1.csv
+model_path = models/final_df.pkl
+model_dir = models
+df_path = models/final_df.pkl
+
+[logging]
+log_file = logs/recommendation_system.log
+log_level = INFO
+log_format = %(asctime)s - %(levelname)s - %(message)s
+
+[model]
+top_n = 5
+
+[retrain]
+interval = 60
+row_growth_threshold = 100
+
+[database]
+host = your_host
+user = your_user
+password = your_password
+database = your_database
