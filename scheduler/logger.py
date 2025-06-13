@@ -6,7 +6,7 @@ using parameters defined in the config module.
 """
 
 import logging
-from config import LOG_FILE, LOG_LEVEL, LOG_FORMAT
+from scheduler.config import LOG_FILE, LOG_LEVEL, LOG_FORMAT
 
 def setup_logging():
     """

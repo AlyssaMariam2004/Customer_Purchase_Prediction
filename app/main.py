@@ -59,11 +59,11 @@ async def lifespan(app: FastAPI):
     try:
         load_pickled_data()  # Initial model load
         asyncio.create_task(monitor_model_updates())  # Start model monitoring task
-        yield
     except Exception as e:
         logging.error(f"[Startup] Failed during application lifespan: {e}")
-
-
+    finally:
+        yield 
+        
 # Initialize FastAPI app with custom lifespan handler
 app = FastAPI(lifespan=lifespan)
 

@@ -17,11 +17,11 @@ import joblib
 import pandas as pd
 from datetime import datetime
 
-from config import (
+from scheduler.config import (
     CSV_PATH, RETRAIN_INTERVAL, ROW_GROWTH_THRESHOLD,
     MODEL_DIR, DF_PATH, MODEL_PATH
 )
-from recommender import prepare_features
+from scheduler.recommender import prepare_features
 
 # Global state to track last retrain status
 last_retrain_time = time.time()

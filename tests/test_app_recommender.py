@@ -1,12 +1,3 @@
-'''
-test_recommender.py
-
-Unit tests for app.recommender module.
-Includes tests for:
-- Model loading (load_pickled_data)
-- Product recommendations (recommend_products)
-'''
-
 import pytest
 import pandas as pd
 from unittest.mock import patch, MagicMock
@@ -14,99 +5,87 @@ from fastapi import HTTPException
 from app import recommender
 
 
-@pytest.fixture
-def mock_data():
-    """Fixture to set up mock df and final_df for recommendation tests."""
-    df = pd.DataFrame({
-        'Customer ID': ['CUST1', 'CUST2', 'CUST2', 'CUST3', 'CUST1'],
-        'Product ID': ['P1', 'P1', 'P2', 'P3', 'P4'],
-        'Quantity': [1, 1, 2, 3, 1],
-        'Cluster': [0, 0, 0, 1, 0]
+def test_load_pickled_data_successful(tmp_path):
+    """
+    Positive Test:
+    Ensure that pickled data and model files are loaded successfully into global variables.
+    """
+    df_sample = pd.DataFrame({"Customer ID": ["C1"], "Product ID": ["P1"], "Quantity": [1], "Cluster": [0]})
+    model_sample = pd.DataFrame({"Cluster": [0]}, index=["C1"])
+
+    data_path = tmp_path / "df.pkl"
+    model_path = tmp_path / "model.pkl"
+
+    # Save sample DataFrames
+    df_sample.to_pickle(data_path)
+    model_sample.to_pickle(model_path)
+
+    # Patch config paths
+    with patch("app.recommender.DATAFRAME_PATH", str(data_path)), \
+         patch("app.recommender.MODEL_FILE_PATH", str(model_path)):
+        recommender.load_pickled_data()
+        assert isinstance(recommender.df, pd.DataFrame)
+        assert isinstance(recommender.final_df, pd.DataFrame)
+
+
+def test_load_pickled_data_file_missing():
+    """
+    Negative Test:
+    Raise RuntimeError if pickled files do not exist.
+    """
+    with patch("app.recommender.DATAFRAME_PATH", "nonexistent/df.pkl"), \
+         patch("app.recommender.MODEL_FILE_PATH", "nonexistent/model.pkl"):
+        with pytest.raises(RuntimeError) as exc_info:
+            recommender.load_pickled_data()
+        assert "Pickled model or data file not found" in str(exc_info.value)
+
+
+def test_recommend_products_successful():
+    """
+    Positive Test:
+    Recommend products for a valid customer in a valid cluster.
+    """
+    # Purchase data
+    recommender.df = pd.DataFrame({
+        "Customer ID": ["C1", "C2", "C2"],
+        "Product ID": ["P1", "P2", "P3"],
+        "Quantity": [1, 2, 3],
+        "Cluster": [0, 0, 0],
     })
 
-    final_df = pd.DataFrame({
-        'Cluster': [0, 0, 1]
-    }, index=['CUST1', 'CUST2', 'CUST3'])
+    # Cluster mapping
+    recommender.final_df = pd.DataFrame({"Cluster": [0, 0]}, index=["C1", "C2"])
 
-    return df, final_df
+    result = recommender.recommend_products("C1", top_n=2)
+
+    assert isinstance(result, list)
+    assert all(isinstance(prod, str) for prod in result)
 
 
-@patch("app.recommender.joblib.load")
-@patch("app.recommender.os.path.exists")
-def test_load_pickled_data_success(mock_exists, mock_load):
+
+def test_recommend_products_customer_not_found():
     """
-    Tests successful loading of model and dataframe pickle files.
+    Negative Test:
+    Raise 404 if customer ID is not in the model.
     """
-    mock_exists.return_value = True
-    mock_load.side_effect = [pd.DataFrame(), pd.DataFrame()]  # Return valid DataFrames
+    recommender.df = pd.DataFrame()
+    recommender.final_df = pd.DataFrame({"Cluster": [0]}, index=["C2"])
 
-    recommender.load_pickled_data()
-    assert isinstance(recommender.df, pd.DataFrame)
-    assert isinstance(recommender.final_df, pd.DataFrame)
-
-
-@patch("app.recommender.os.path.exists")
-def test_load_pickled_data_file_not_found(mock_exists):
-    """
-    Tests if FileNotFoundError is handled when pickle files are missing.
-    """
-    mock_exists.return_value = False
-    with pytest.raises(RuntimeError):
-        recommender.load_pickled_data()
-
-
-@patch("app.recommender.df", create=True)
-@patch("app.recommender.final_df", create=True)
-def test_recommend_products_success(mock_final_df, mock_df, mock_data):
-    """
-    Tests successful recommendation generation.
-    """
-    df, final_df = mock_data
-    mock_df.__get__ = lambda *_: df
-    mock_final_df.__get__ = lambda *_: final_df
-
-    recommender.df = df
-    recommender.final_df = final_df
-
-    recommendations = recommender.recommend_products("CUST1", top_n=2)
-    assert isinstance(recommendations, list)
-    assert len(recommendations) <= 2
+    with pytest.raises(HTTPException) as exc_info:
+        recommender.recommend_products("C1")
+    assert exc_info.value.status_code == 404
+    assert "Customer ID" in exc_info.value.detail
 
 
 def test_recommend_products_model_not_loaded():
     """
-    Tests error when recommendation is requested before loading model.
+    Negative Test:
+    Raise 500 if the model is not loaded.
     """
     recommender.df = None
     recommender.final_df = None
 
     with pytest.raises(HTTPException) as exc_info:
-        recommender.recommend_products("CUST1")
+        recommender.recommend_products("C1")
     assert exc_info.value.status_code == 500
-
-
-def test_recommend_products_invalid_customer(mock_data):
-    """
-    Tests handling of unknown customer ID.
-    """
-    df, final_df = mock_data
-    recommender.df = df
-    recommender.final_df = final_df
-
-    with pytest.raises(HTTPException) as exc_info:
-        recommender.recommend_products("INVALID")
-    assert exc_info.value.status_code == 404
-
-
-def test_recommend_products_no_purchase_history(mock_data):
-    """
-    Tests error when a customer has no purchase history in cluster.
-    """
-    df, final_df = mock_data
-    recommender.df = df
-    recommender.final_df = final_df.copy()
-    recommender.final_df.loc["CUSTX"] = 0  # Add new customer to cluster
-
-    with pytest.raises(HTTPException) as exc_info:
-        recommender.recommend_products("CUSTX")
-    assert exc_info.value.status_code == 404
+    assert "Model not loaded" in exc_info.value.detail

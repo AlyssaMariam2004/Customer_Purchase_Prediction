@@ -12,7 +12,7 @@ import logging
 import pandas as pd
 import mysql.connector
 
-from config import DB_CONFIG, CSV_PATH
+from scheduler.config import DB_CONFIG, CSV_PATH
 
 def fetch_data() -> pd.DataFrame:
     """

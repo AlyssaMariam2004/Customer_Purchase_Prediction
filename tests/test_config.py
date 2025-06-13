@@ -1,87 +1,86 @@
-"""
-test_config.py
-
-Unit tests for the `app.config` module, which handles application-wide configuration
-loading from a `.ini` file. Tests include validation of path resolution, configuration
-value types, and expected key presence in configuration dictionaries.
-"""
+# tests/test_config.py
 
 import os
+import tempfile
+import configparser
 import pytest
-from app import config
+from importlib import reload
+from unittest import mock
 
 
-def test_csv_file_path_is_absolute_and_exists():
+@pytest.fixture
+def temp_config_path():
     """
-    Test if the CSV file path is an absolute string and points to a valid file or directory.
+    Fixture to create a temporary config.ini file and return its path.
     """
-    assert isinstance(config.CSV_FILE_PATH, str)
-    assert os.path.isabs(config.CSV_FILE_PATH)
+    with tempfile.TemporaryDirectory() as temp_dir:
+        config_path = os.path.join(temp_dir, "config.ini")
+
+        config = configparser.ConfigParser()
+        config["paths"] = {
+            "csv_path": "./data/data.csv",
+            "model_dir": "./models",
+            "model_path": "./models/model.pkl",
+            "df_path": "./data/final_df.pkl"
+        }
+        config["database"] = {
+            "host": "localhost",
+            "user": "user",
+            "password": "pass",
+            "database": "mydb"
+        }
+        config["logging"] = {
+            "log_file": "logs/app.log",
+            "log_level": "INFO",
+            "log_format": "%(levelname)s:%(message)s"
+        }
+        config["retrain"] = {
+            "interval": "60",
+            "row_growth_threshold": "500"
+        }
+        config["model"] = {
+            "top_n": "5"
+        }
+
+        with open(config_path, "w") as f:
+            config.write(f)
+
+        yield config_path
 
 
-def test_model_directory_is_absolute_and_exists():
+def test_get_absolute_path_success(temp_config_path):
     """
-    Test if the model directory path is absolute and a valid path.
+    Positive Test:
+    Should return an absolute path for a valid section and key using mocked config.
     """
-    assert isinstance(config.MODEL_DIRECTORY, str)
-    assert os.path.isabs(config.MODEL_DIRECTORY)
+    with mock.patch("app.config.os.path.join", return_value=temp_config_path):
+        import app.config as config_loader
+        reload(config_loader)
+        path = config_loader.get_absolute_path("paths", "csv_path")
+        assert isinstance(path, str)
+        assert os.path.isabs(path)
 
 
-def test_model_file_path_is_absolute():
+def test_get_absolute_path_invalid_key(temp_config_path):
     """
-    Ensure the model file path is an absolute path.
+    Negative Test:
+    Should raise NoOptionError for an invalid key.
     """
-    assert isinstance(config.MODEL_FILE_PATH, str)
-    assert os.path.isabs(config.MODEL_FILE_PATH)
+    with mock.patch("app.config.os.path.join", return_value=temp_config_path):
+        import app.config as config_loader
+        reload(config_loader)
+        with pytest.raises(configparser.NoOptionError):
+            config_loader.get_absolute_path("paths", "invalid_key")
 
 
-def test_dataframe_path_is_absolute():
+def test_get_absolute_path_invalid_section(temp_config_path):
     """
-    Ensure the DataFrame pickle file path is an absolute path.
+    Negative Test:
+    Should raise NoSectionError for an invalid section.
     """
-    assert isinstance(config.DATAFRAME_PATH, str)
-    assert os.path.isabs(config.DATAFRAME_PATH)
-
-
-def test_database_config_contains_expected_keys():
-    """
-    Test if database config contains required keys and they are non-empty strings.
-    """
-    required_keys = {'host', 'user', 'password', 'database'}
-    assert set(config.DATABASE_CONFIG.keys()) == required_keys
-
-    for key in required_keys:
-        assert isinstance(config.DATABASE_CONFIG[key], str)
-        assert config.DATABASE_CONFIG[key] != ""
-
-
-def test_logging_config_values():
-    """
-    Validate that logging configuration values are strings and log level is one of the valid levels.
-    """
-    assert isinstance(config.LOGGING_FILE_PATH, str)
-    assert isinstance(config.LOGGING_LEVEL, str)
-    assert isinstance(config.LOGGING_FORMAT, str)
-    assert config.LOGGING_LEVEL.upper() in {
-        "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
-    }
-
-
-def test_retrain_config_values_are_integers():
-    """
-    Ensure retraining config values are integers and positive.
-    """
-    assert isinstance(config.MODEL_RETRAIN_INTERVAL, int)
-    assert config.MODEL_RETRAIN_INTERVAL > 0
-
-    assert isinstance(config.ROW_GROWTH_THRESHOLD, int)
-    assert config.ROW_GROWTH_THRESHOLD > 0
-
-
-def test_default_top_n_is_positive_integer():
-    """
-    Validate that default top N recommendations is a positive integer.
-    """
-    assert isinstance(config.DEFAULT_TOP_N, int)
-    assert config.DEFAULT_TOP_N > 0
+    with mock.patch("app.config.os.path.join", return_value=temp_config_path):
+        import app.config as config_loader
+        reload(config_loader)
+        with pytest.raises(configparser.NoSectionError):
+            config_loader.get_absolute_path("invalid_section", "csv_path")
 

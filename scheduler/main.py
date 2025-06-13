@@ -13,9 +13,9 @@ import logging
 from datetime import datetime, timedelta
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from trainer import maybe_retrain_model
-from data_ingestion import sync_data
-from logger import setup_logging
+from scheduler.trainer import maybe_retrain_model
+from scheduler.data_ingestion import sync_data
+from scheduler.logger import setup_logging
 
 # Configure global logging
 setup_logging()
@@ -23,35 +23,44 @@ setup_logging()
 # Create an instance of the scheduler
 scheduler = BlockingScheduler()
 
-# Get current timestamp to schedule initial runs
-now = datetime.now()
 
-try:
-    # Schedule `sync_data` to run every 2 minutes
-    scheduler.add_job(
-        sync_data,
-        trigger='interval',
-        minutes=2,
-        next_run_time=now  # first run immediately
-    )
+def start_scheduler():
+    """
+    Initializes and starts the APScheduler with sync and retrain jobs.
+    Logs any exception during setup or execution.
+    """
+    now = datetime.now()
 
-    # Schedule `maybe_retrain_model` to run every 2 minutes (with slight offset)
-    scheduler.add_job(
-        maybe_retrain_model,
-        trigger='interval',
-        minutes=2,
-        next_run_time=now + timedelta(seconds=5)  # first run after 5 seconds
-    )
+    try:
+        # Schedule `sync_data` to run every 2 minutes
+        scheduler.add_job(
+            sync_data,
+            trigger='interval',
+            minutes=2,
+            next_run_time=now
+        )
 
-    if __name__ == "__main__":
+        # Schedule `maybe_retrain_model` to run every 2 minutes (offset)
+        scheduler.add_job(
+            maybe_retrain_model,
+            trigger='interval',
+            minutes=2,
+            next_run_time=now + timedelta(seconds=5)
+        )
+
         logging.info("Scheduler starting...")
-        
-        # Initial manual run before interval jobs
+
+        # Run initial executions before interval triggers
         sync_data()
         maybe_retrain_model()
 
         # Start the scheduler loop
         scheduler.start()
 
-except Exception as e:
-    logging.error(f"Error in scheduler initialization: {e}")
+    except Exception as e:
+        logging.error(f"Error in scheduler initialization: {e}")
+
+
+# Run only if this script is the entry point
+if __name__ == "__main__":
+    start_scheduler()

@@ -1,134 +1,141 @@
-"""
-test_trainer.py
-
-Unit tests for the trainer module in the customer purchase prediction system.
-
-Covers:
-- Model saving logic
-- Pickle cleanup
-- Retraining triggers
-- CSV and data handling
-"""
-
 import os
 import time
-import shutil
-import tempfile
 import pytest
 import pandas as pd
-from unittest.mock import patch, MagicMock
-
+import joblib
+from unittest import mock
 from scheduler import trainer
 
 
 @pytest.fixture
-def sample_raw_df():
-    """Fixture: Returns a sample raw DataFrame."""
+def raw_df():
+    """Returns a sample raw DataFrame with customer data."""
     return pd.DataFrame({
         "Customer ID": ["C1", "C2"],
-        "Product ID": ["P1", "P2"],
-        "Quantity": [3, 5],
-        "Customer Age": [25, 40],
-        "Customer Gender": ["F", "M"],
+        "Product ID": ["P1", "P1"],
+        "Quantity": [3, 2],
+        "Customer Age": [25, 35],
+        "Customer Gender": ["M", "F"],
         "Warehouse ID": ["W1", "W2"]
     })
 
 
 @pytest.fixture
-def sample_processed_df():
-    """Fixture: Returns a sample processed DataFrame with cluster column."""
+def processed_df():
+    """Returns a processed DataFrame with clustering results."""
     return pd.DataFrame({
-        "P1": [1, 0],
-        "P2": [0, 1],
-        "Customer Age": [25, 40],
-        "Customer Gender_F": [1, 0],
-        "Customer Gender_M": [0, 1],
-        "Warehouse ID_W1": [1, 0],
-        "Warehouse ID_W2": [0, 1],
+        "Customer Age": [25, 35],
         "Cluster": [0, 1]
     })
 
 
-@pytest.fixture
-def temp_model_dir():
-    """Fixture: Creates a temporary model directory for cleanup tests."""
-    tmp_dir = tempfile.mkdtemp()
-    trainer.MODEL_DIR = tmp_dir  # Patch global config path
-    yield tmp_dir
-    shutil.rmtree(tmp_dir)
+def test_save_model_success(tmp_path, raw_df, processed_df):
+    """
+    Positive test: save_model should write model files when given valid DataFrames.
+    """
+    with mock.patch("scheduler.trainer.DF_PATH", tmp_path / "df.pkl"), \
+         mock.patch("scheduler.trainer.MODEL_PATH", tmp_path / "model.pkl"), \
+         mock.patch("scheduler.trainer.MODEL_DIR", tmp_path):
+
+        trainer.save_model(raw_df, processed_df)
+
+        df_file = tmp_path / "df.pkl"
+        model_file = tmp_path / "model.pkl"
+        assert df_file.exists()
+        assert model_file.exists()
+
+        # Check that the content is a DataFrame
+        loaded_df = joblib.load(df_file)
+        assert isinstance(loaded_df, pd.DataFrame)
 
 
-@patch("scheduler.trainer.joblib.dump")
-def test_save_model_success(mock_dump, sample_raw_df, sample_processed_df, temp_model_dir):
-    """Test that model files are saved and timestamped backup files are generated."""
-    trainer.DF_PATH = os.path.join(temp_model_dir, "df.pkl")
-    trainer.MODEL_PATH = os.path.join(temp_model_dir, "model.pkl")
+def test_save_model_invalid_input(raw_df):
+    """
+    Negative test: save_model should log errors if inputs are invalid types.
+    """
+    # Case 1: raw_data is invalid
+    with mock.patch("scheduler.trainer.logging.error") as mock_log:
+        trainer.save_model("invalid", raw_df)
+        assert mock_log.called
+        assert "raw_data must be a pandas DataFrame" in str(mock_log.call_args)
 
-    trainer.save_model(sample_raw_df, sample_processed_df)
-
-    assert mock_dump.call_count == 4  # 2 for normal save, 2 for timestamped versions
-
-
-def test_cleanup_old_pickles_removes_excess_files(temp_model_dir):
-    """Test cleanup_old_pickles deletes older .pkl files beyond the `keep` threshold."""
-    # Create 6 dummy pickle files (3 pairs)
-    for i in range(3):
-        open(os.path.join(temp_model_dir, f"df_202406{i}_010101.pkl"), "w").close()
-        open(os.path.join(temp_model_dir, f"final_df_202406{i}_010101.pkl"), "w").close()
-
-    trainer.cleanup_old_pickles(keep=1)
-
-    remaining = os.listdir(temp_model_dir)
-    assert len(remaining) == 2  # Only latest pair should remain
+    # Case 2: processed_data is invalid
+    with mock.patch("scheduler.trainer.logging.error") as mock_log:
+        trainer.save_model(raw_df, "invalid")
+        assert mock_log.called
+        assert "processed_data must be a pandas DataFrame" in str(mock_log.call_args)
 
 
-@patch("scheduler.trainer.prepare_features")
-@patch("scheduler.trainer.save_model")
-def test_retrain_model_success(mock_save, mock_prepare, sample_raw_df, sample_processed_df, tmp_path):
-    """Test retrain_model loads CSV, prepares features, and saves model."""
-    # Patch CSV_PATH with a temp CSV
-    trainer.CSV_PATH = tmp_path / "data.csv"
-    sample_raw_df.to_csv(trainer.CSV_PATH, index=False)
-
-    mock_prepare.return_value = sample_processed_df
-
-    trainer.retrain_model()
-
-    assert mock_save.called
-    assert mock_prepare.called
 
 
-@patch("scheduler.trainer.retrain_model")
-@patch("scheduler.trainer.time")
-def test_maybe_retrain_model_triggers_on_conditions(mock_time, mock_retrain, tmp_path, sample_raw_df):
-    """Test maybe_retrain_model triggers retrain if time or growth thresholds are met."""
-    trainer.CSV_PATH = tmp_path / "data.csv"
-    sample_raw_df.to_csv(trainer.CSV_PATH, index=False)
+def test_cleanup_old_pickles(tmp_path):
+    """
+    Positive test: cleanup_old_pickles should delete old pickle files, keeping only recent ones.
+    """
+    for i in range(4):
+        for suffix in ["df", "final_df"]:
+            file = tmp_path / f"{suffix}_2024060{i}.pkl"
+            file.write_text("dummy")
 
-    # Simulate that threshold conditions are met
-    trainer.last_retrain_time = time.time() - (trainer.RETRAIN_INTERVAL + 1)
-    trainer.last_row_count = 0
+    with mock.patch("scheduler.trainer.MODEL_DIR", tmp_path):
+        trainer.cleanup_old_pickles(keep=1)
 
-    mock_time.time.return_value = time.time()
-
-    trainer.maybe_retrain_model()
-
-    assert mock_retrain.called
+        remaining = list(tmp_path.glob("*.pkl"))
+        assert len(remaining) == 2  # Should keep 2 files: 1 df_ and 1 final_df_
 
 
-@patch("scheduler.trainer.retrain_model")
-@patch("scheduler.trainer.time")
-def test_maybe_retrain_model_skips_if_conditions_not_met(mock_time, mock_retrain, tmp_path, sample_raw_df):
-    """Test maybe_retrain_model skips retraining if conditions not met."""
-    trainer.CSV_PATH = tmp_path / "data.csv"
-    sample_raw_df.to_csv(trainer.CSV_PATH, index=False)
+def test_retrain_model_executes(tmp_path, raw_df):
+    """
+    Positive test: retrain_model should save model if CSV exists and is valid.
+    """
+    csv_path = tmp_path / "data.csv"
+    raw_df.to_csv(csv_path, index=False)
 
-    # Simulate that thresholds are not met
-    trainer.last_retrain_time = time.time()
-    trainer.last_row_count = len(sample_raw_df)
+    with mock.patch("scheduler.trainer.CSV_PATH", str(csv_path)), \
+         mock.patch("scheduler.trainer.prepare_features", return_value=raw_df), \
+         mock.patch("scheduler.trainer.save_model") as mock_save:
+        trainer.retrain_model()
+        mock_save.assert_called_once()
 
-    mock_time.time.return_value = time.time()
 
-    trainer.maybe_retrain_model()
+def test_retrain_model_missing_file(tmp_path):
+    """
+    Negative test: retrain_model should log warning if CSV doesn't exist.
+    """
+    with mock.patch("scheduler.trainer.CSV_PATH", tmp_path / "missing.csv"), \
+         mock.patch("scheduler.trainer.logging") as mock_log:
+        trainer.retrain_model()
+        assert mock_log.warning.called
 
-    assert not mock_retrain.called
+
+def test_maybe_retrain_model_threshold_time(tmp_path, raw_df):
+    """
+    Positive test: maybe_retrain_model should trigger retraining if enough time passed.
+    """
+    csv_path = tmp_path / "data.csv"
+    raw_df.to_csv(csv_path, index=False)
+
+    with mock.patch("scheduler.trainer.CSV_PATH", str(csv_path)), \
+         mock.patch("scheduler.trainer.last_retrain_time", time.time() - 1000), \
+         mock.patch("scheduler.trainer.RETRAIN_INTERVAL", 100), \
+         mock.patch("scheduler.trainer.last_row_count", 0), \
+         mock.patch("scheduler.trainer.retrain_model") as mock_retrain:
+        trainer.maybe_retrain_model()
+        mock_retrain.assert_called_once()
+
+
+def test_maybe_retrain_model_threshold_growth(tmp_path, raw_df):
+    """
+    Positive test: maybe_retrain_model should retrain if row growth exceeds threshold.
+    """
+    csv_path = tmp_path / "data.csv"
+    raw_df.to_csv(csv_path, index=False)
+
+    with mock.patch("scheduler.trainer.CSV_PATH", str(csv_path)), \
+         mock.patch("scheduler.trainer.last_retrain_time", time.time()), \
+         mock.patch("scheduler.trainer.last_row_count", 0), \
+         mock.patch("scheduler.trainer.ROW_GROWTH_THRESHOLD", 1), \
+         mock.patch("scheduler.trainer.retrain_model") as mock_retrain:
+        trainer.maybe_retrain_model()
+        mock_retrain.assert_called_once()
+

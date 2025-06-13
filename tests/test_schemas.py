@@ -1,11 +1,7 @@
-"""
-test_schemas.py
-
-Unit tests for Pydantic schema definitions in `app.schemas`.
-Tests ensure validation and default behavior of CustomerRequest.
-"""
+# tests/test_schemas.py
 
 import pytest
+from unittest.mock import patch
 from pydantic import ValidationError
 
 from app.schemas import CustomerRequest
@@ -14,50 +10,43 @@ from app.config import DEFAULT_TOP_N
 
 def test_customer_request_valid_data():
     """
-    Test CustomerRequest with valid input data.
+    Positive Test:
+    Ensure CustomerRequest accepts valid input with both fields provided.
     """
-    payload = {
-        "customer_id": "CUST001",
-        "top_n": 7
-    }
-    schema = CustomerRequest(**payload)
-    assert schema.customer_id == "CUST001"
-    assert schema.top_n == 7
+    req = CustomerRequest(customer_id="C001", top_n=5)
+    assert req.customer_id == "C001"
+    assert req.top_n == 5
 
 
 def test_customer_request_uses_default_top_n():
     """
-    Test CustomerRequest uses default value for top_n when omitted.
+    Positive Test:
+    Ensure top_n uses default when not provided.
     """
-    payload = {
-        "customer_id": "CUST002"
-    }
-    schema = CustomerRequest(**payload)
-    assert schema.customer_id == "CUST002"
-    assert schema.top_n == DEFAULT_TOP_N
+    req = CustomerRequest(customer_id="C002")
+    assert req.customer_id == "C002"
+    assert req.top_n == DEFAULT_TOP_N
 
 
-def test_customer_request_invalid_customer_id_type():
+def test_customer_request_invalid_missing_customer_id():
     """
-    Test validation fails when customer_id is not a string.
+    Negative Test:
+    Should raise ValidationError when customer_id is missing.
     """
-    payload = {
-        "customer_id": 123,  # Invalid type
-        "top_n": 5
-    }
     with pytest.raises(ValidationError) as exc_info:
-        CustomerRequest(**payload)
+        CustomerRequest(top_n=5)
     assert "customer_id" in str(exc_info.value)
 
 
-def test_customer_request_invalid_top_n_type():
+@patch("app.schemas.DEFAULT_TOP_N", 3)
+def test_customer_request_invalid_type_for_top_n():
     """
-    Test validation fails when top_n is not an integer.
+    Negative Test:
+    Should raise ValidationError when top_n is not an integer.
     """
-    payload = {
-        "customer_id": "CUST003",
-        "top_n": "five"  # Invalid type
-    }
     with pytest.raises(ValidationError) as exc_info:
-        CustomerRequest(**payload)
-    assert "top_n" in str(exc_info.value)
+        CustomerRequest(customer_id="C003", top_n="five")
+    assert "Input should be a valid integer" in str(exc_info.value)
+
+
+

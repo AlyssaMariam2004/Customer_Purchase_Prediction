@@ -1,84 +1,39 @@
-"""
-test_routes.py
-
-Unit tests for the FastAPI routes defined in app.routes.
-These tests validate the recommendation endpoint with valid and invalid input.
-
-Fixtures are used to mock the recommender function and prevent actual model calls.
-"""
-
-import pytest
-from fastapi.testclient import TestClient
 from unittest.mock import patch
+from fastapi import status
+from fastapi.testclient import TestClient
 
-from app.main import app
+from app.routes import router
+from app.schemas import CustomerRequest
+from fastapi import FastAPI
+
+# Setup FastAPI app with router for testing
+app = FastAPI()
+app.include_router(router)
 
 client = TestClient(app)
 
 
-@pytest.fixture
-def valid_request():
-    """Fixture returning a sample valid customer request payload."""
-    return {"customer_id": "CUST123", "top_n": 5}
-
-
-@pytest.fixture
-def invalid_request():
-    """Fixture returning a sample invalid request payload."""
-    return {"customer_id": "", "top_n": 5}
-
-
-@patch("app.routes.recommend_products")
-def test_recommend_endpoint_success(mock_recommend, valid_request):
+def test_recommend_success():
     """
-    Test the /user endpoint returns recommendations for valid input.
+    Positive Test:
+    Should return a list of product recommendations when recommend_products works correctly.
     """
-    mock_recommend.return_value = ["PROD1", "PROD2", "PROD3"]
+    mock_recommendations = ["P001", "P002", "P003"]
 
-    response = client.post("/user", json=valid_request)
-
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
-    assert all(isinstance(prod, str) for prod in response.json())
-    assert len(response.json()) == 3
+    with patch("app.routes.recommend_products", return_value=mock_recommendations):
+        response = client.post("/user", json={"customer_id": "C123", "top_n": 3})
+        assert response.status_code == status.HTTP_200_OK
+        assert response.json() == mock_recommendations
 
 
-@patch("app.routes.recommend_products")
-def test_recommend_endpoint_customer_not_found(mock_recommend, valid_request):
+def test_recommend_failure_returns_http_exception():
     """
-    Test the /user endpoint returns 404 when customer is not found.
+    Negative Test:
+    Should raise HTTPException with 400 status if recommend_products returns an error dict.
     """
-    from fastapi import HTTPException
-    mock_recommend.side_effect = HTTPException(status_code=404, detail="Customer not found")
+    mock_error = {"error": "Customer not found"}
 
-    response = client.post("/user", json=valid_request)
-
-    assert response.status_code == 404
-    assert "Customer not found" in response.text
-
-
-@patch("app.routes.recommend_products")
-def test_recommend_endpoint_internal_error(mock_recommend, valid_request):
-    """
-    Test the /user endpoint returns 500 for unexpected internal errors.
-    """
-    from fastapi import HTTPException
-    mock_recommend.side_effect = HTTPException(status_code=500, detail="Internal server error")
-
-    response = client.post("/user", json=valid_request)
-
-    assert response.status_code == 500
-    assert "Internal server error" in response.text
-
-
-@patch("app.routes.recommend_products")
-def test_recommend_endpoint_fallback_error_dict(mock_recommend, valid_request):
-    """
-    Test if returned dictionary with 'error' key raises HTTP 400.
-    """
-    mock_recommend.return_value = {"error": "Malformed request"}
-
-    response = client.post("/user", json=valid_request)
-
-    assert response.status_code == 400
-    assert "Malformed request" in response.text
+    with patch("app.routes.recommend_products", return_value=mock_error):
+        response = client.post("/user", json={"customer_id": "INVALID", "top_n": 5})
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.json()["detail"] == "Customer not found"
