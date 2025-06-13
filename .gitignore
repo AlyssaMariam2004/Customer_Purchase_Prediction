@@ -1,0 +1,3 @@
+# Ignore config.ini in app and scheduler
+/app/config.ini
+/scheduler/config.ini

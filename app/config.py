@@ -1,5 +1,5 @@
 """
-config_loader.py
+config.py
 
 This module handles configuration loading from a `.ini` file.
 It extracts paths, database credentials, logging preferences, model parameters,
@@ -33,13 +33,17 @@ MODEL_DIRECTORY = get_absolute_path("paths", "model_dir")
 MODEL_FILE_PATH = get_absolute_path("paths", "model_path")
 DATAFRAME_PATH = get_absolute_path("paths", "df_path")
 
-# Database configuration
+from dotenv import load_dotenv
+
+load_dotenv()  
+
 DATABASE_CONFIG = {
-    'host': config.get("database", "host"),
-    'user': config.get("database", "user"),
-    'password': config.get("database", "password"),
-    'database': config.get("database", "database")
+    'host': os.getenv("DB_HOST"),
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD"),
+    'database': os.getenv("DB_NAME")
 }
+
 
 # Logging configuration
 LOGGING_FILE_PATH = config.get("logging", "log_file")

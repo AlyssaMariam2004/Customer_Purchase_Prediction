@@ -41,13 +41,15 @@ DF_PATH = os.path.join(
     config.get("paths", "df_filename")
 )  # Full path to the DataFrame pickle
 
-# Database Configuration
+from dotenv import load_dotenv
 
-DB_CONFIG = {
-    'host': config.get("database", "host"),
-    'user': config.get("database", "user"),
-    'password': config.get("database", "password"),
-    'database': config.get("database", "database")
+load_dotenv()  
+
+DATABASE_CONFIG = {
+    'host': os.getenv("DB_HOST"),
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD"),
+    'database': os.getenv("DB_NAME")
 }
 
 

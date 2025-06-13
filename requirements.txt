@@ -10,3 +10,4 @@ pytest
 apscheduler
 httpx
 pytest-asyncio
+python-dotenv
