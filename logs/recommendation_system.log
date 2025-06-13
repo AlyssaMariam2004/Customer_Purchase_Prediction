@@ -841,3 +841,31 @@ FileNotFoundError: Pickled model or data file not found.
 2025-06-13 14:35:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:05 IST)" (scheduled at 2025-06-13 14:35:05.822539+05:30)
 2025-06-13 14:35:05 - INFO - No retraining needed at this time.
 2025-06-13 14:35:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:37:05 IST)" executed successfully
+2025-06-13 14:37:00 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:39:00 IST)" (scheduled at 2025-06-13 14:37:00.822539+05:30)
+2025-06-13 14:37:00 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:37:00 - INFO - Merged dataset now contains 24945 rows.
+2025-06-13 14:37:01 - INFO - Data successfully written to CSV.
+2025-06-13 14:37:01 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:39:00 IST)" executed successfully
+2025-06-13 14:37:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:39:05 IST)" (scheduled at 2025-06-13 14:37:05.822539+05:30)
+2025-06-13 14:37:05 - INFO - No retraining needed at this time.
+2025-06-13 14:37:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:39:05 IST)" executed successfully
+2025-06-13 14:39:00 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:41:00 IST)" (scheduled at 2025-06-13 14:39:00.822539+05:30)
+2025-06-13 14:39:00 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:39:00 - INFO - Merged dataset now contains 24945 rows.
+2025-06-13 14:39:01 - INFO - Data successfully written to CSV.
+2025-06-13 14:39:01 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:41:00 IST)" executed successfully
+2025-06-13 14:39:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:41:05 IST)" (scheduled at 2025-06-13 14:39:05.822539+05:30)
+2025-06-13 14:39:05 - INFO - No retraining needed at this time.
+2025-06-13 14:39:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:41:05 IST)" executed successfully
+2025-06-13 14:40:14 - INFO - Successfully loaded pickled data and model.
+2025-06-13 14:40:14 - INFO - Detected model change. Reloading model...
+2025-06-13 14:40:14 - INFO - Successfully loaded pickled data and model.
+2025-06-13 14:40:43 - WARNING - Requested Customer ID not found: CUST12345
+2025-06-13 14:41:00 - INFO - Running job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:43:00 IST)" (scheduled at 2025-06-13 14:41:00.822539+05:30)
+2025-06-13 14:41:00 - INFO - Starting data sync from database to CSV...
+2025-06-13 14:41:00 - INFO - Merged dataset now contains 24945 rows.
+2025-06-13 14:41:01 - INFO - Data successfully written to CSV.
+2025-06-13 14:41:01 - INFO - Job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-13 14:43:00 IST)" executed successfully
+2025-06-13 14:41:05 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:43:05 IST)" (scheduled at 2025-06-13 14:41:05.822539+05:30)
+2025-06-13 14:41:05 - INFO - No retraining needed at this time.
+2025-06-13 14:41:05 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:43:05 IST)" executed successfully
