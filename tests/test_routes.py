@@ -20,7 +20,7 @@ def test_recommend_success():
     """
     mock_recommendations = ["P001", "P002", "P003"]
 
-    with patch("app.routes.recommend_products", return_value=mock_recommendations):
+    with patch("app.api.routes.recommend_products", return_value=mock_recommendations):
         response = client.post("/user", json={"customer_id": "C123", "top_n": 3})
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == mock_recommendations
@@ -33,7 +33,7 @@ def test_recommend_failure_returns_http_exception():
     """
     mock_error = {"error": "Customer not found"}
 
-    with patch("app.routes.recommend_products", return_value=mock_error):
+    with patch("app.api.routes.recommend_products", return_value=mock_error):
         response = client.post("/user", json={"customer_id": "INVALID", "top_n": 5})
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert response.json()["detail"] == "Customer not found"

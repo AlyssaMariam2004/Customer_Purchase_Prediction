@@ -21,8 +21,8 @@ def test_load_pickled_data_successful(tmp_path):
     model_sample.to_pickle(model_path)
 
     # Patch config paths
-    with patch("app.recommender.DATAFRAME_PATH", str(data_path)), \
-         patch("app.recommender.MODEL_FILE_PATH", str(model_path)):
+    with patch("app.services.recommender.DATAFRAME_PATH", str(data_path)), \
+         patch("app.services.recommender.MODEL_FILE_PATH", str(model_path)):
         recommender.load_pickled_data()
         assert isinstance(recommender.df, pd.DataFrame)
         assert isinstance(recommender.final_df, pd.DataFrame)
@@ -33,8 +33,8 @@ def test_load_pickled_data_file_missing():
     Negative Test:
     Raise RuntimeError if pickled files do not exist.
     """
-    with patch("app.recommender.DATAFRAME_PATH", "nonexistent/df.pkl"), \
-         patch("app.recommender.MODEL_FILE_PATH", "nonexistent/model.pkl"):
+    with patch("app.services.recommender.DATAFRAME_PATH", "nonexistent/df.pkl"), \
+         patch("app.services.recommender.MODEL_FILE_PATH", "nonexistent/model.pkl"):
         with pytest.raises(RuntimeError) as exc_info:
             recommender.load_pickled_data()
         assert "Pickled model or data file not found" in str(exc_info.value)

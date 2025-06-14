@@ -38,7 +38,7 @@ def test_customer_request_invalid_missing_customer_id():
     assert "customer_id" in str(exc_info.value)
 
 
-@patch("app.schemas.DEFAULT_TOP_N", 3)
+@patch("app.api.schemas.DEFAULT_TOP_N", 3)
 def test_customer_request_invalid_type_for_top_n():
     """
     Negative Test:
