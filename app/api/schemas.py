@@ -5,7 +5,7 @@ This module defines request schemas for the FastAPI application using Pydantic.
 """
 
 from pydantic import BaseModel
-from app.config import DEFAULT_TOP_N
+from app.core.config import DEFAULT_TOP_N
 
 class CustomerRequest(BaseModel):
     """

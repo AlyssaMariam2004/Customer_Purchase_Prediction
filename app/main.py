@@ -11,11 +11,10 @@ import asyncio
 import logging
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-
-from app.routes import router
-from app.logger import setup_logging
-from app.recommender import load_pickled_data
-from app.config import MODEL_FILE_PATH
+from app.api.routes import router
+from app.core.logger import setup_logging
+from app.services.recommender import load_pickled_data
+from app.core.config import MODEL_FILE_PATH
 
 # Set up logging configuration
 setup_logging()

@@ -14,7 +14,7 @@ from collections import Counter
 from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import HTTPException
 
-from app.config import DATAFRAME_PATH, MODEL_FILE_PATH
+from app.core.config import DATAFRAME_PATH, MODEL_FILE_PATH
 
 # Global variables for the loaded datasets
 df = None  # Complete purchase data

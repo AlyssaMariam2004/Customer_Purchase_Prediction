@@ -4,8 +4,8 @@ import pytest
 from unittest.mock import patch
 from pydantic import ValidationError
 
-from app.schemas import CustomerRequest
-from app.config import DEFAULT_TOP_N
+from app.api.schemas import CustomerRequest
+from app.core.config import DEFAULT_TOP_N
 
 
 def test_customer_request_valid_data():

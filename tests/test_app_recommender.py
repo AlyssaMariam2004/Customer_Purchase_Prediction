@@ -2,7 +2,7 @@ import pytest
 import pandas as pd
 from unittest.mock import patch, MagicMock
 from fastapi import HTTPException
-from app import recommender
+from app.services import recommender
 
 
 def test_load_pickled_data_successful(tmp_path):

@@ -2,7 +2,7 @@ import logging
 import pytest
 from unittest import mock
 
-from app import logger
+from app.core import logger
 
 
 def test_setup_logging_positive():

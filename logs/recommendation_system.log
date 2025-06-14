@@ -883,3 +883,5 @@ FileNotFoundError: Pickled model or data file not found.
 2025-06-13 14:43:06 - INFO - Removed old model backup: df_20250613_144306.pkl
 2025-06-13 14:43:06 - INFO - Model retrained successfully.
 2025-06-13 14:43:06 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-13 14:45:05 IST)" executed successfully
+2025-06-13 15:07:39 - INFO - Detected model change. Reloading model...
+2025-06-13 15:07:39 - INFO - Successfully loaded pickled data and model.

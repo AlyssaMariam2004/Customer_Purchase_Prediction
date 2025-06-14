@@ -2,8 +2,8 @@ from unittest.mock import patch
 from fastapi import status
 from fastapi.testclient import TestClient
 
-from app.routes import router
-from app.schemas import CustomerRequest
+from app.api.routes import router
+from app.api.schemas import CustomerRequest
 from fastapi import FastAPI
 
 # Setup FastAPI app with router for testing

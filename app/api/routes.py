@@ -5,8 +5,8 @@ Defines API routes for the customer product recommendation service.
 """
 
 from fastapi import APIRouter, HTTPException
-from app.schemas import CustomerRequest
-from app.recommender import recommend_products
+from app.api.schemas import CustomerRequest
+from app.services.recommender import recommend_products
 
 # Create a router instance to register API endpoints
 router = APIRouter()

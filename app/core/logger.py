@@ -6,7 +6,7 @@ It reads log file location, log level, and format from the config settings.
 """
 
 import logging
-from app.config import LOGGING_FILE_PATH, LOGGING_LEVEL, LOGGING_FORMAT
+from app.core.config import LOGGING_FILE_PATH, LOGGING_LEVEL, LOGGING_FORMAT
 
 def setup_logging() -> None:
     """
