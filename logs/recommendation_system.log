@@ -892,3 +892,10 @@ FileNotFoundError: Pickled model or data file not found.
 2025-06-14 11:17:40 - INFO - Successfully loaded pickled data and model.
 2025-06-14 11:17:40 - INFO - Detected model change. Reloading model...
 2025-06-14 11:17:40 - INFO - Successfully loaded pickled data and model.
+2025-06-17 10:59:43 - INFO - Successfully loaded pickled data and model.
+2025-06-17 10:59:43 - INFO - Detected model change. Reloading model...
+2025-06-17 10:59:43 - INFO - Successfully loaded pickled data and model.
+2025-06-17 11:00:49 - WARNING - Requested Customer ID not found: CUST0011223
+2025-06-17 11:15:25 - WARNING - Requested Customer ID not found: CUST1234567
+2025-06-17 11:15:33 - WARNING - Requested Customer ID not found: CUST
+2025-06-17 11:15:37 - WARNING - Requested Customer ID not found: CUS
