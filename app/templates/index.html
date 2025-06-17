@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recommendation System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Get Product Recommendations</h1>
+  <form id="recommend-form">
+    <input type="text" id="customer_id" placeholder="Customer ID" required />
+    <input type="number" id="top_n" placeholder="Top N" value="5" min="1" />
+    <button type="submit">Get Recommendations</button>
+  </form>
+  <div id="results"></div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
+
