@@ -899,3 +899,34 @@ FileNotFoundError: Pickled model or data file not found.
 2025-06-17 11:15:25 - WARNING - Requested Customer ID not found: CUST1234567
 2025-06-17 11:15:33 - WARNING - Requested Customer ID not found: CUST
 2025-06-17 11:15:37 - WARNING - Requested Customer ID not found: CUS
+2025-06-17 11:32:35 - INFO - Successfully loaded pickled data and model.
+2025-06-17 11:32:35 - INFO - Detected model change. Reloading model...
+2025-06-17 11:32:35 - INFO - Successfully loaded pickled data and model.
+2025-06-18 14:10:30 - WARNING - Requested Customer ID not found: CUST1234567890
+2025-06-22 10:52:02 - INFO - Successfully loaded pickled data and model.
+2025-06-22 10:52:02 - INFO - Detected model change. Reloading model...
+2025-06-22 10:52:02 - INFO - Successfully loaded pickled data and model.
+2025-06-22 10:58:47 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-22 10:58:47 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-22 10:58:47 - INFO - Scheduler starting...
+2025-06-22 10:58:47 - INFO - Starting data sync from database to CSV...
+2025-06-22 10:58:47 - ERROR - MySQL connection error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (111)
+2025-06-22 10:58:47 - WARNING - No data fetched from the database.
+2025-06-22 10:58:47 - INFO - Triggering retraining based on threshold.
+2025-06-22 10:58:47 - INFO - Preparing features for clustering.
+2025-06-22 10:58:48 - INFO - Successfully loaded pickled data and model.
+2025-06-22 10:58:48 - INFO - Detected model change. Reloading model...
+2025-06-22 10:58:48 - INFO - Successfully loaded pickled data and model.
+2025-06-22 10:58:49 - INFO - Feature preparation and clustering completed.
+2025-06-22 10:58:49 - INFO - Model saved to DF_PATH and MODEL_PATH.
+2025-06-22 10:58:49 - INFO - Removed old model backup: final_df_20250613_143303.pkl
+2025-06-22 10:58:49 - INFO - Removed old model backup: df_20250622_105849.pkl
+2025-06-22 10:58:49 - INFO - Model retrained successfully.
+2025-06-22 10:58:49 - INFO - Added job "sync_data" to job store "default"
+2025-06-22 10:58:49 - INFO - Added job "maybe_retrain_model" to job store "default"
+2025-06-22 10:58:49 - INFO - Scheduler started
+2025-06-22 10:58:49 - WARNING - Run time of job "sync_data (trigger: interval[0:02:00], next run at: 2025-06-22 10:58:47 UTC)" was missed by 0:00:01.700592
+2025-06-22 10:58:52 - INFO - Running job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-22 11:00:52 UTC)" (scheduled at 2025-06-22 10:58:52.755042+00:00)
+2025-06-22 10:58:52 - INFO - No retraining needed at this time.
+2025-06-22 10:58:52 - INFO - Job "maybe_retrain_model (trigger: interval[0:02:00], next run at: 2025-06-22 11:00:52 UTC)" executed successfully
+2025-06-22 10:59:13 - WARNING - Requested Customer ID not found: CUST12345678
